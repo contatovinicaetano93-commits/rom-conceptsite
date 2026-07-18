@@ -2,13 +2,15 @@
 
 Landing page do **ROM Concept**.
 
-## Play music (tamanho reduzido)
+## Play music — tamanho menor
 
-O player fixo da landing foi enxugado:
+Botão flutuante de play/pause (canto inferior direito):
 
-| Elemento | Antes | Depois |
+| | Antes (ao vivo) | Agora |
 |---|---|---|
-| Botão 🎵 | 56×56px | 40×40px |
-| Embed Spotify | 330×380px | 280×152px (compacto) |
+| Diâmetro | 56px | **32px** |
+| Ícone | 24px | **14px** |
 
-Arquivo: `concept/src/app/page.tsx`
+Arquivo: `concept/src/app/page.tsx` (constante `MUSIC_BUTTON_SIZE_PX`).
+
+> O site em `concept-eta-jet.vercel.app` ainda mostra 56px até o deploy usar este código.
