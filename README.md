@@ -1,16 +1,9 @@
-# rom-conceptsite
+# ROM Concept
 
-Landing page do **ROM Concept**.
+Landing page do ROM Concept.
 
-## Play music — tamanho menor
+## Play music
 
-Botão flutuante de play/pause (canto inferior direito):
+Botão flutuante de play/pause no canto inferior direito: **32px** (antes 56px).
 
-| | Antes (ao vivo) | Agora |
-|---|---|---|
-| Diâmetro | 56px | **32px** |
-| Ícone | 24px | **14px** |
-
-Arquivo: `concept/src/app/page.tsx` (constante `MUSIC_BUTTON_SIZE_PX`).
-
-> O site em `concept-eta-jet.vercel.app` ainda mostra 56px até o deploy usar este código.
+Arquivo: `src/components/music-player.tsx`
