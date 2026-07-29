@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0908;
+  --surface: #100e0c;
+  --card: #16130f;
+  --card-elevated: #1d1913;
+  --foreground: #f3efe8;
+  --border: #2a2621;
+  --muted: #928b7e;
+  --gold: #d4a94e;
+  --gold-strong: #e6bd5c;
+  --gold-bright: #f0b429;
+  --brasil: #c4a35a;
+  --iguatemi: #7eb8a8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-gold: var(--gold);
+  --color-gold-strong: var(--gold-strong);
+  --color-gold-bright: var(--gold-bright);
+  --color-brasil: var(--brasil);
+  --color-iguatemi: var(--iguatemi);
+  --font-sans: var(--font-body-sans);
+  --font-serif: var(--font-cormorant);
+  --font-display: var(--font-display-face);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--gold) 30%, transparent);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up-1 {
+  animation: 0.65s ease-out 50ms both fade-up;
+}
+.animate-fade-up-2 {
+  animation: 0.7s ease-out 0.24s both fade-up;
+}
+.animate-fade-up-3 {
+  animation: 0.7s ease-out 0.45s both fade-up;
+}
+
+.gold-text {
+  background: linear-gradient(
+    120deg,
+    var(--gold) 0%,
+    var(--gold-bright) 40%,
+    var(--gold-strong) 80%,
+    var(--gold) 100%
+  );
+  color: transparent;
+  background-size: 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.section-label {
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-serif), serif;
+}
+
+.font-serif {
+  font-family: var(--font-serif), serif;
+}
+
+.card-border {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--card-elevated) 0%, var(--card) 100%);
+}
+
+.cta-primary {
+  background: linear-gradient(
+    135deg,
+    var(--gold-strong) 0%,
+    var(--gold) 50%,
+    var(--gold-bright) 100%
+  );
+  color: #0a0908;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+.cta-primary:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--gold) 35%, transparent);
+  transform: translateY(-1px);
+}
+
+.cta-secondary {
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  color: var(--foreground);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.cta-secondary:hover {
+  border-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  color: var(--gold-strong);
+}
+
+.salon-card-brasil {
+  border-color: color-mix(in srgb, var(--brasil) 35%, var(--border));
+}
+
+.salon-card-iguatemi {
+  border-color: color-mix(in srgb, var(--iguatemi) 35%, var(--border));
+}
+
+.medallion-ring {
+  position: relative;
+}
+
+.medallion-ring::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    color-mix(in srgb, var(--gold-bright) 90%, transparent) 8%,
+    transparent 22%,
+    transparent 100%
+  );
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 3px), #000 calc(100% - 3px));
+  mask: radial-gradient(farthest-side, #0000 calc(100% - 3px), #000 calc(100% - 3px));
+  animation: 16s linear infinite spin;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes services-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.333%);
+  }
+}
+
+.services-marquee-track {
+  will-change: transform;
+  animation: 42s linear infinite services-marquee;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-marquee-track {
+    animation: none;
+  }
+
+  .animate-fade-up-1,
+  .animate-fade-up-2,
+  .animate-fade-up-3 {
+    animation: none;
+  }
+}
