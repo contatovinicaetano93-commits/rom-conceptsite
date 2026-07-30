@@ -337,7 +337,18 @@ body {
   }
 }
 
-/* Services horizontal marquee — pause on hover */
+/* Services — mobile stacked grid; desktop marquee */
+.services-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.services-grid__card {
+  padding: 1.25rem 1.35rem;
+  border-radius: 1rem;
+}
+
+/* Services horizontal marquee — pause on hover (desktop) */
 .services-marquee {
   overflow: hidden;
   margin-inline: calc(50% - 50vw);
