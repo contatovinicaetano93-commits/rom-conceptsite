@@ -337,6 +337,94 @@ body {
   }
 }
 
+/* Services horizontal marquee — pause on hover */
+.services-marquee {
+  overflow: hidden;
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.services-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  padding: 0.25rem 1rem;
+  animation: services-marquee 42s linear infinite;
+  will-change: transform;
+}
+
+.services-marquee:hover .services-marquee__track {
+  animation-play-state: paused;
+}
+
+.services-marquee__card {
+  flex: 0 0 auto;
+  width: min(18.5rem, 72vw);
+  min-height: 7.5rem;
+  padding: 1.25rem 1.35rem;
+  border-radius: 1rem;
+}
+
+@keyframes services-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* “Seu momento Rom” ticker between Romeu and Galeria */
+.momento-marquee {
+  overflow: hidden;
+  border-block: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+  padding-block: 0.95rem;
+}
+
+.momento-marquee__track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 0.15rem;
+  animation: momento-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.momento-marquee:hover .momento-marquee__track {
+  animation-play-state: paused;
+}
+
+.momento-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding-inline: 0.35rem 0;
+  font-size: clamp(0.72rem, 1.4vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--foreground) 55%, transparent);
+  white-space: nowrap;
+}
+
+.momento-marquee__sep {
+  color: color-mix(in srgb, var(--gold) 70%, transparent);
+  letter-spacing: 0;
+}
+
+@keyframes momento-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Scroll-drawn arrow between Conceito and Romeu */
 .scroll-arrow {
   position: relative;
@@ -493,5 +581,11 @@ body {
   .scroll-arrow__path,
   .scroll-arrow__head {
     filter: none;
+  }
+
+  .services-marquee__track,
+  .momento-marquee__track {
+    animation: none !important;
+    transform: none !important;
   }
 }

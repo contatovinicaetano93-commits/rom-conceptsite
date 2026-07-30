@@ -14,8 +14,10 @@ import { CountUp } from '@/components/count-up'
 import { HeroCarousel } from '@/components/hero-carousel'
 import { MusicPlayer } from '@/components/music-player'
 import { ScrollProgress } from '@/components/scroll-progress'
+import { MomentoMarquee } from '@/components/momento-marquee'
 import { ScrollArrowLine } from '@/components/scroll-arrow-line'
 import { ScrollReveal } from '@/components/scroll-reveal'
+import { ServicesMarquee } from '@/components/services-marquee'
 import { SideGuide } from '@/components/side-guide'
 import { SiteIntro } from '@/components/site-intro'
 import {
@@ -23,7 +25,6 @@ import {
   mapUrl,
   salonWhatsappUrl,
   salons,
-  services,
   stats,
 } from '@/lib/content'
 
@@ -357,24 +358,12 @@ export default function Home() {
                 variam conforme o serviço; a equipe confirma no agendamento.
               </p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {services.map((service, index) => (
-                <article
-                  key={service.name}
-                  data-reveal
-                  style={{ '--reveal-delay': index * 70 } as CSSProperties}
-                  className="card-border card-glow group cursor-pointer rounded-2xl p-5"
-                >
-                  <p className="section-label mb-2 transition-colors group-hover:text-gold">
-                    {service.category}
-                  </p>
-                  <h3 className="text-base font-medium text-foreground transition-colors group-hover:text-gold">
-                    {service.name}
-                  </h3>
-                </article>
-              ))}
-            </div>
-            <p data-reveal="soft" className="mt-8 text-sm text-muted">
+          </div>
+          <div className="mt-2">
+            <ServicesMarquee />
+          </div>
+          <div className="mx-auto mt-8 max-w-6xl px-5 md:px-8">
+            <p data-reveal="soft" className="text-sm text-muted">
               Serviços exclusivos podem variar por unidade — consulte a equipe ao agendar.
             </p>
           </div>
@@ -492,6 +481,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <MomentoMarquee />
 
         <section
           id="galeria"
