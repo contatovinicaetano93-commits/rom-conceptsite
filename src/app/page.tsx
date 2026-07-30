@@ -14,6 +14,7 @@ import { CountUp } from '@/components/count-up'
 import { HeroCarousel } from '@/components/hero-carousel'
 import { MusicPlayer } from '@/components/music-player'
 import { ScrollProgress } from '@/components/scroll-progress'
+import { ScrollArrowLine } from '@/components/scroll-arrow-line'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { SideGuide } from '@/components/side-guide'
 import { SiteIntro } from '@/components/site-intro'
@@ -413,6 +414,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <ScrollArrowLine />
 
         <section id="romeu" className="relative overflow-hidden bg-surface/30 py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
