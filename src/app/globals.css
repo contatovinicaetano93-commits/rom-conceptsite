@@ -308,6 +308,88 @@ body {
   }
 }
 
+/* Side scroll guide — overlay only */
+.side-guide {
+  position: fixed;
+  top: 50%;
+  right: 1.1rem;
+  z-index: 60;
+  display: none;
+  transform: translateY(-50%);
+}
+
+@media (min-width: 1024px) {
+  .side-guide {
+    display: block;
+  }
+}
+
+.side-guide__list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.side-guide__item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: color-mix(in srgb, var(--muted) 85%, transparent);
+  cursor: pointer;
+  transition:
+    color 0.35s var(--ease-out-expo),
+    transform 0.35s var(--ease-out-expo);
+}
+
+.side-guide__item:hover {
+  color: var(--foreground);
+}
+
+.side-guide__item.is-active {
+  color: var(--gold-strong);
+}
+
+.side-guide__label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  transition: opacity 0.35s var(--ease-out-expo);
+}
+
+.side-guide__item:hover .side-guide__label,
+.side-guide__item.is-active .side-guide__label {
+  opacity: 1;
+}
+
+.side-guide__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--muted) 70%, transparent);
+  box-shadow: none;
+  transition:
+    width 0.35s var(--ease-out-expo),
+    height 0.35s var(--ease-out-expo),
+    background 0.35s var(--ease-out-expo),
+    box-shadow 0.35s var(--ease-out-expo);
+}
+
+.side-guide__item.is-active .side-guide__dot {
+  width: 9px;
+  height: 9px;
+  background: var(--gold-bright);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 55%, transparent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .site-intro,
   .site-intro__veil,
@@ -322,9 +404,15 @@ body {
     animation-iteration-count: 1 !important;
   }
 
-  [data-reveal] {
+  .reveal-ready [data-reveal],
+  .side-guide__item,
+  .side-guide__label,
+  .side-guide__dot {
+    transition: none !important;
+  }
+
+  .reveal-ready [data-reveal] {
     opacity: 1 !important;
     transform: none !important;
-    transition: none !important;
   }
 }
