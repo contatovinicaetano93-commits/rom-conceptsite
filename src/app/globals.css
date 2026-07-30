@@ -13,6 +13,7 @@
   --gold-bright: #f0b429;
   --brasil: #c4a35a;
   --iguatemi: #7eb8a8;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
@@ -58,13 +59,41 @@ body {
 }
 
 .animate-fade-up-1 {
-  animation: 0.65s ease-out 50ms both fade-up;
+  animation: 0.7s var(--ease-out-expo) 50ms both fade-up;
 }
 .animate-fade-up-2 {
-  animation: 0.7s ease-out 0.24s both fade-up;
+  animation: 0.75s var(--ease-out-expo) 0.24s both fade-up;
 }
 .animate-fade-up-3 {
-  animation: 0.7s ease-out 0.45s both fade-up;
+  animation: 0.75s var(--ease-out-expo) 0.45s both fade-up;
+}
+
+/* Scroll reveals — motion only, same layout.
+   Hidden only after JS arms `.reveal-ready` (avoids SSR flash). */
+.reveal-ready [data-reveal]:not(.is-in) {
+  opacity: 0;
+  transform: translateY(24px);
+  will-change: opacity, transform;
+}
+
+.reveal-ready [data-reveal='soft']:not(.is-in) {
+  transform: translateY(16px);
+}
+
+.reveal-ready [data-reveal='lift']:not(.is-in) {
+  transform: translateY(32px);
+}
+
+.reveal-ready [data-reveal] {
+  transition:
+    opacity 0.7s var(--ease-out-expo),
+    transform 0.7s var(--ease-out-expo);
+  transition-delay: calc(var(--reveal-delay, 0) * 1ms);
+}
+
+.reveal-ready [data-reveal].is-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .gold-text {
@@ -283,8 +312,19 @@ body {
   .site-intro,
   .site-intro__veil,
   .site-intro__line--primary,
-  .site-intro__line--secondary {
+  .site-intro__line--secondary,
+  .animate-fade-up-1,
+  .animate-fade-up-2,
+  .animate-fade-up-3,
+  .medallion-ring::before {
     animation-duration: 0.01ms !important;
     animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
