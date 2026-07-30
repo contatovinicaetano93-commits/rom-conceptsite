@@ -489,4 +489,9 @@ body {
     opacity: 1 !important;
     transform: none !important;
   }
+
+  .scroll-arrow__path,
+  .scroll-arrow__head {
+    filter: none;
+  }
 }
