@@ -15,6 +15,7 @@ import { HeroCarousel } from '@/components/hero-carousel'
 import { MusicPlayer } from '@/components/music-player'
 import { ScrollProgress } from '@/components/scroll-progress'
 import { ScrollReveal } from '@/components/scroll-reveal'
+import { SideGuide } from '@/components/side-guide'
 import { SiteIntro } from '@/components/site-intro'
 import {
   brand,
@@ -48,6 +49,7 @@ export default function Home() {
       <SiteIntro />
       <ScrollReveal />
       <ScrollProgress />
+      <SideGuide />
 
       <header className="fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur-md transition-all duration-300">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-8">
@@ -87,7 +89,10 @@ export default function Home() {
       </header>
 
       <main>
-        <section className="relative min-h-[88vh] overflow-hidden pt-36 pb-16 md:min-h-[92vh] md:pt-44 md:pb-24">
+        <section
+          id="inicio"
+          className="relative min-h-[88vh] overflow-hidden pt-36 pb-16 md:min-h-[92vh] md:pt-44 md:pb-24"
+        >
           <HeroCarousel />
           <div
             className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/68 to-background/95"
@@ -409,7 +414,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-surface/30 py-20 md:py-28">
+        <section id="romeu" className="relative overflow-hidden bg-surface/30 py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Quem conduz</p>
