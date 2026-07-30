@@ -131,6 +131,35 @@ body {
   background: linear-gradient(180deg, var(--card-elevated) 0%, var(--card) 100%);
 }
 
+/* Golden flash on hover — services / conceito cards */
+.card-glow {
+  transition:
+    border-color 0.4s var(--ease-out-expo),
+    box-shadow 0.4s var(--ease-out-expo),
+    background 0.4s var(--ease-out-expo),
+    transform 0.4s var(--ease-out-expo);
+}
+
+.card-glow:hover {
+  border-color: color-mix(in srgb, var(--gold-bright) 65%, var(--border));
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--gold) 10%, var(--card-elevated)) 0%,
+      color-mix(in srgb, var(--gold) 4%, var(--card)) 100%
+    );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--gold-bright) 40%, transparent),
+    0 0 28px color-mix(in srgb, var(--gold) 32%, transparent),
+    0 0 56px color-mix(in srgb, var(--gold) 14%, transparent),
+    inset 0 0 32px color-mix(in srgb, var(--gold) 10%, transparent);
+  transform: translateY(-1px);
+}
+
+.card-glow:hover .section-label {
+  color: var(--gold-strong);
+}
+
 .cta-primary {
   background: linear-gradient(
     135deg,
@@ -407,8 +436,13 @@ body {
   .reveal-ready [data-reveal],
   .side-guide__item,
   .side-guide__label,
-  .side-guide__dot {
+  .side-guide__dot,
+  .card-glow {
     transition: none !important;
+  }
+
+  .card-glow:hover {
+    transform: none !important;
   }
 
   .reveal-ready [data-reveal] {
