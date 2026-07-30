@@ -337,6 +337,46 @@ body {
   }
 }
 
+/* Scroll-drawn arrow between Conceito and Romeu */
+.scroll-arrow {
+  position: relative;
+  z-index: 2;
+  margin: -0.5rem 0;
+  padding: 0.25rem 0;
+  pointer-events: none;
+}
+
+.scroll-arrow__inner {
+  margin: 0 auto;
+  max-width: 72rem;
+  padding: 0 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .scroll-arrow__inner {
+    padding: 0 2rem;
+  }
+}
+
+.scroll-arrow__svg {
+  display: block;
+  width: 100%;
+  height: clamp(2.5rem, 6vw, 4.5rem);
+  overflow: visible;
+}
+
+.scroll-arrow__path,
+.scroll-arrow__head {
+  fill: none;
+  stroke: var(--gold-bright);
+  stroke-width: 1.6;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--gold) 55%, transparent));
+}
+
+.scroll-arrow__head {
+  stroke-width: 1.8;
+}
+
 /* Side scroll guide — overlay only */
 .side-guide {
   position: fixed;
