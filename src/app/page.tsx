@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { MapPin, MessageCircle, Clock } from 'lucide-react'
 import { MusicPlayer } from '@/components/music-player'
+import { SiteIntro } from '@/components/site-intro'
 
 const HERO_IMAGE =
   'https://twoarquitetura.com.br/wp-content/uploads/2023/12/T222227.jpg'
@@ -8,6 +9,7 @@ const HERO_IMAGE =
 export default function Home() {
   return (
     <>
+      <SiteIntro />
       <header className="fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-8">
           <a className="group flex flex-col" href="/">
