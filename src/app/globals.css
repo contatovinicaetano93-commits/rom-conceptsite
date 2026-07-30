@@ -168,7 +168,7 @@ body {
   }
 }
 
-/* Site intro — layered reveal (~3.5s, no skip) */
+/* Site intro — layered reveal (~6.5s, no skip) */
 .site-intro {
   position: fixed;
   inset: 0;
@@ -178,7 +178,7 @@ body {
   justify-content: center;
   padding: 1.5rem;
   background: #0a0908;
-  animation: site-intro-exit 0.9s ease-in-out 2.6s forwards;
+  animation: site-intro-exit 0.9s ease-in-out 5.6s forwards;
   pointer-events: all;
 }
 

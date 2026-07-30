@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-const INTRO_DURATION_MS = 3500
+const INTRO_DURATION_MS = 6500
 
 export function SiteIntro() {
   const [visible, setVisible] = useState(true)
