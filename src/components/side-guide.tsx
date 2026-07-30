@@ -71,7 +71,7 @@ export function SideGuide() {
     }
   }, [])
 
-  const scrollTo = (id: string) => {
+  const scrollTo = (id: SectionId) => {
     const el = document.getElementById(id)
     if (!el) return
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
