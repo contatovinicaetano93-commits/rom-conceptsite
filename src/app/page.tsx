@@ -1,16 +1,52 @@
 import Image from 'next/image'
-import { MapPin, MessageCircle, Clock } from 'lucide-react'
+import {
+  AtSign,
+  Award,
+  Clock,
+  MapPin,
+  MessageCircle,
+  Navigation,
+  Phone,
+  Play,
+} from 'lucide-react'
+import { CountUp } from '@/components/count-up'
+import { HeroCarousel } from '@/components/hero-carousel'
 import { MusicPlayer } from '@/components/music-player'
+import { ScrollProgress } from '@/components/scroll-progress'
 import { SiteIntro } from '@/components/site-intro'
+import {
+  brand,
+  mapUrl,
+  salonWhatsappUrl,
+  salons,
+  services,
+  stats,
+} from '@/lib/content'
 
-const HERO_IMAGE =
-  'https://twoarquitetura.com.br/wp-content/uploads/2023/12/T222227.jpg'
+const accentStyles = {
+  brasil: {
+    badge: 'border-brasil/40 bg-brasil/10 text-brasil',
+    card: 'salon-card-brasil',
+    dot: 'bg-brasil',
+    chip: 'border-brasil/35 hover:border-brasil/60',
+    text: 'text-brasil',
+  },
+  iguatemi: {
+    badge: 'border-iguatemi/40 bg-iguatemi/10 text-iguatemi',
+    card: 'salon-card-iguatemi',
+    dot: 'bg-iguatemi',
+    chip: 'border-iguatemi/35 hover:border-iguatemi/60',
+    text: 'text-iguatemi',
+  },
+} as const
 
 export default function Home() {
   return (
     <>
       <SiteIntro />
-      <header className="fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur-md">
+      <ScrollProgress />
+
+      <header className="fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur-md transition-all duration-300">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-8">
           <a className="group flex flex-col" href="/">
             <span className="text-[0.65rem] font-semibold tracking-[0.28em] text-gold uppercase">
@@ -49,23 +85,29 @@ export default function Home() {
 
       <main>
         <section className="relative min-h-[88vh] overflow-hidden pt-36 pb-16 md:min-h-[92vh] md:pt-44 md:pb-24">
-          <div className="absolute inset-0" aria-hidden>
-            <Image
-              src={HERO_IMAGE}
-              alt="Vista ampla do salão — ROM Concept Jardins"
-              fill
-              priority
-              className="object-cover object-center"
-              sizes="100vw"
-            />
-          </div>
+          <HeroCarousel />
           <div
             className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/68 to-background/95"
             aria-hidden
           />
+          <div
+            className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_20%,color-mix(in_srgb,var(--gold)_12%,transparent),transparent_70%)]"
+            aria-hidden
+          />
+
+          <div className="absolute top-1/2 left-4 z-10 hidden -translate-y-1/2 md:block lg:left-7">
+            <div className="flex -rotate-90 items-center gap-2 whitespace-nowrap text-[0.65rem] font-semibold tracking-[0.4em] text-gold/80 uppercase">
+              <Award className="size-3.5 shrink-0" aria-hidden />
+              Guinness World Records · maior salão de beleza do mundo
+            </div>
+          </div>
+
           <div className="relative z-10 mx-auto max-w-6xl px-5 md:px-8">
             <div className="mx-auto max-w-3xl text-center">
               <div className="animate-fade-up-1">
+                <p className="section-label mb-4 md:hidden">
+                  Guinness World Records · maior salão de beleza do mundo
+                </p>
                 <p className="font-serif text-lg text-foreground/90 italic md:text-xl">
                   ROM, o poder de transformar.
                 </p>
@@ -75,8 +117,8 @@ export default function Home() {
               </h1>
               <div className="animate-fade-up-3">
                 <p className="mx-auto mt-5 max-w-xl text-pretty text-balance text-base font-medium leading-relaxed text-foreground md:text-xl">
-                  Beleza, saúde e bem-estar em um oásis de sofisticação — mais de 300 cadeiras entre Av.
-                  Brasil e Shopping Iguatemi.
+                  Beleza, saúde e bem-estar em um oásis de sofisticação — mais de 300 cadeiras entre
+                  Av. Brasil e Shopping Iguatemi.
                 </p>
                 <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm text-foreground/90">
                   <div className="flex items-center gap-2 rounded-full border border-border/80 bg-background/55 px-4 py-2 backdrop-blur-sm">
@@ -96,56 +138,57 @@ export default function Home() {
                     Escolha a unidade mais conveniente para você.
                   </p>
                   <div className="mx-auto mt-6 grid max-w-lg gap-3 sm:grid-cols-2">
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group rounded-2xl border border-brasil/35 bg-background/60 p-4 text-left backdrop-blur-sm transition hover:border-brasil/60 hover:bg-background/75"
-                      href="https://wa.me/5511993021379?text=Ol%C3%A1!%20Quero%20agendar%20%23SeuMomentoROM%20na%20unidade%20Av.%20Brasil."
-                    >
-                      <span className="text-[0.65rem] font-semibold tracking-[0.2em] text-brasil uppercase">
-                        Jardins
-                      </span>
-                      <span className="mt-1 block font-serif text-lg text-foreground group-hover:text-gold-strong">
-                        Av. Brasil, 126
-                      </span>
-                      <span className="mt-1 block text-xs text-muted">Ter–sáb · 9h–21h</span>
-                    </a>
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group rounded-2xl border border-iguatemi/35 bg-background/60 p-4 text-left backdrop-blur-sm transition hover:border-iguatemi/60 hover:bg-background/75"
-                      href="https://wa.me/5511988600188?text=Ol%C3%A1!%20Quero%20agendar%20%23SeuMomentoROM%20na%20unidade%20Iguatemi."
-                    >
-                      <span className="text-[0.65rem] font-semibold tracking-[0.2em] text-iguatemi uppercase">
-                        Iguatemi
-                      </span>
-                      <span className="mt-1 block font-serif text-lg text-foreground group-hover:text-gold-strong">
-                        Faria Lima, 2232
-                      </span>
-                      <span className="mt-1 block text-xs text-muted">Seg–sáb · 10h–22h</span>
-                    </a>
+                    {salons.map((salon) => {
+                      const styles = accentStyles[salon.accent]
+                      return (
+                        <a
+                          key={salon.id}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`group rounded-2xl border bg-background/60 p-4 text-left backdrop-blur-sm transition hover:bg-background/75 ${styles.chip}`}
+                          href={salonWhatsappUrl(salon)}
+                        >
+                          <span
+                            className={`text-[0.65rem] font-semibold tracking-[0.2em] uppercase ${styles.text}`}
+                          >
+                            {salon.accent === 'brasil' ? 'Jardins' : 'Iguatemi'}
+                          </span>
+                          <span className="mt-1 block font-serif text-lg text-foreground group-hover:text-gold-strong">
+                            {salon.accent === 'brasil' ? 'Av. Brasil, 126' : 'Faria Lima, 2232'}
+                          </span>
+                          <span className="mt-1 block text-xs text-muted">
+                            {salon.accent === 'brasil' ? 'Ter–sáb · 9h–21h' : 'Seg–sáb · 10h–22h'}
+                          </span>
+                        </a>
+                      )
+                    })}
                   </div>
+                  <a
+                    href="#unidades"
+                    className="mt-5 inline-block text-sm text-muted transition hover:text-gold"
+                  >
+                    Ver endereços completos e serviços →
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <div className="my-8 h-px origin-left bg-gradient-to-r from-transparent via-gold to-transparent" />
+        </div>
+
         <section className="border-y border-border bg-surface/50 py-14 md:py-16">
           <div className="mx-auto grid max-w-5xl gap-x-6 gap-y-10 px-5 sm:grid-cols-2 md:grid-cols-4 md:px-8">
-            {[
-              { value: 'Guinness', label: 'Maior salão de beleza do mundo · 2024' },
-              { value: '337 cadeiras', label: '227 na Av. Brasil + 110 no Iguatemi' },
-              { value: '5.800 m²', label: '4.000 m² Av. Brasil + 1.800 m² Iguatemi' },
-              { value: '2', label: 'Unidades · Jardins e Shopping Iguatemi' },
-            ].map((item) => (
-              <div key={item.label} className="flex flex-col items-center text-center">
+            {stats.map((stat) => (
+              <div key={stat.label} className="flex flex-col items-center text-center">
                 <div className="medallion-ring flex size-28 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-card/60 p-3 md:size-32">
                   <p className="font-serif text-lg leading-[1.15] text-gold-strong md:text-xl">
-                    {item.value}
+                    <CountUp value={stat.value} />
                   </p>
                 </div>
-                <p className="mt-4 max-w-[11rem] text-xs leading-relaxed text-muted">{item.label}</p>
+                <p className="mt-4 max-w-[11rem] text-xs leading-relaxed text-muted">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -159,46 +202,126 @@ export default function Home() {
                 Duas unidades em São Paulo
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
-                Escolha a unidade mais conveniente e agende #SeuMomentoROM pelo WhatsApp.
+                Escolha a unidade mais conveniente e agende #SeuMomentoROM pelo WhatsApp. A equipe
+                confirma horário e serviço com você.
               </p>
             </div>
+
             <div className="grid gap-6 md:grid-cols-2 md:gap-8">
-              <article className="card-border salon-card-brasil flex h-full flex-col overflow-hidden rounded-3xl p-6 md:p-8">
-                <span className="inline-flex w-fit items-center rounded-full border border-brasil/40 bg-brasil/10 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.2em] text-brasil uppercase">
-                  Brasil
-                </span>
-                <h3 className="mt-4 font-serif text-2xl text-foreground md:text-3xl">
-                  ROM Concept · Av. Brasil
-                </h3>
-                <p className="mt-4 text-sm text-muted">Av. Brasil, 126 — Jardim Paulista</p>
-                <p className="mt-2 text-sm text-muted">Terça a sábado · 9h às 21h</p>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cta-primary mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm uppercase"
-                  href="https://wa.me/5511993021379?text=Ol%C3%A1!%20Quero%20agendar%20%23SeuMomentoROM%20na%20unidade%20Av.%20Brasil."
-                >
-                  Agendar aqui
-                </a>
-              </article>
-              <article className="card-border salon-card-iguatemi flex h-full flex-col overflow-hidden rounded-3xl p-6 md:p-8">
-                <span className="inline-flex w-fit items-center rounded-full border border-iguatemi/40 bg-iguatemi/10 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.2em] text-iguatemi uppercase">
-                  Iguatemi
-                </span>
-                <h3 className="mt-4 font-serif text-2xl text-foreground md:text-3xl">
-                  ROM Concept · Iguatemi
-                </h3>
-                <p className="mt-4 text-sm text-muted">Av. Brigadeiro Faria Lima, 2232 · 9º andar</p>
-                <p className="mt-2 text-sm text-muted">Seg–sáb 10h–22h · dom e feriados 12h–20h</p>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cta-primary mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm uppercase"
-                  href="https://wa.me/5511988600188?text=Ol%C3%A1!%20Quero%20agendar%20%23SeuMomentoROM%20na%20unidade%20Iguatemi."
-                >
-                  Agendar aqui
-                </a>
-              </article>
+              {salons.map((salon) => {
+                const styles = accentStyles[salon.accent]
+                return (
+                  <div
+                    key={salon.id}
+                    className={`card-border flex h-full flex-col overflow-hidden rounded-3xl ${styles.card}`}
+                  >
+                    <article>
+                      <div className="relative mb-6 -mx-0 overflow-hidden">
+                        <Image
+                          src={salon.image}
+                          alt={salon.name}
+                          width={600}
+                          height={400}
+                          className="h-auto w-full object-cover"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      </div>
+                      <div className="px-6 pb-6 md:px-8 md:pb-8">
+                        <div className="mb-4 flex items-start justify-between gap-4">
+                          <div>
+                            <span
+                              className={`inline-flex items-center rounded-full border px-3 py-1 text-[0.65rem] font-semibold tracking-[0.2em] uppercase ${styles.badge}`}
+                            >
+                              {salon.shortName}
+                            </span>
+                            <h3 className="mt-4 font-serif text-2xl text-foreground md:text-3xl">
+                              {salon.name}
+                            </h3>
+                          </div>
+                          <span
+                            className={`mt-2 size-2.5 shrink-0 rounded-full ${styles.dot}`}
+                            aria-hidden
+                          />
+                        </div>
+
+                        <div className="mb-4 space-y-3 text-sm text-muted">
+                          <div className="flex items-start gap-2">
+                            <MapPin className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden />
+                            <div>
+                              <p className="text-foreground/90">{salon.location}</p>
+                              <p>{salon.address}</p>
+                              {salon.floor ? <p>{salon.floor}</p> : null}
+                              <p>São Paulo — SP · CEP {salon.cep}</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Phone className="size-4 shrink-0 text-gold" aria-hidden />
+                            <a
+                              href={`tel:${salon.phone.replace(/\D/g, '')}`}
+                              className="hover:text-gold"
+                            >
+                              {salon.phone}
+                            </a>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <AtSign className="size-4 shrink-0 text-gold" aria-hidden />
+                            <a
+                              href={salon.instagram}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-gold"
+                            >
+                              @{salon.instagram.split('/').pop()}
+                            </a>
+                          </div>
+                        </div>
+
+                        <p className="mb-6 text-base leading-relaxed text-muted">{salon.description}</p>
+
+                        <ul className="mb-8 space-y-2">
+                          {salon.highlights.map((item) => (
+                            <li
+                              key={item}
+                              className="flex items-start gap-2 text-sm text-foreground/90"
+                            >
+                              <span
+                                className={`mt-1.5 size-1.5 shrink-0 rounded-full ${styles.dot}`}
+                              />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+
+                        <div className="mt-auto flex flex-col gap-3 sm:flex-row">
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="cta-primary inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm uppercase"
+                            href={salonWhatsappUrl(salon)}
+                          >
+                            <MessageCircle className="size-4" aria-hidden />
+                            Agendar aqui
+                          </a>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="cta-secondary inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm"
+                            href={mapUrl(salon.mapQuery)}
+                          >
+                            <Navigation className="size-4" aria-hidden />
+                            Como chegar
+                          </a>
+                        </div>
+
+                        <p className="mt-4 flex items-center gap-2 text-xs text-muted">
+                          <Clock className="size-3.5 shrink-0" aria-hidden />
+                          {salon.hours}
+                        </p>
+                      </div>
+                    </article>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </section>
@@ -210,60 +333,181 @@ export default function Home() {
               <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
                 O que fazemos
               </h2>
+              <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
+                Corte, coloração, mechas, tratamentos e bem-estar — com padrão ROM Concept. Valores
+                variam conforme o serviço; a equipe confirma no agendamento.
+              </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                ['Cabelo', 'Corte e styling'],
-                ['Cabelo', 'Coloração e mechas criativas'],
-                ['Tratamento', 'Spa capilar e tratamentos'],
-                ['Make', 'Maquiagem'],
-                ['Unhas', 'Manicure e nail art'],
-                ['Estética', 'Design de sobrancelha e cílios'],
-              ].map(([label, title]) => (
+              {services.map((service) => (
                 <article
-                  key={title}
-                  className="card-border rounded-2xl p-5 transition hover:border-gold/50 hover:bg-gold/5"
+                  key={service.name}
+                  className="card-border group cursor-pointer rounded-2xl p-5 transition hover:border-gold/50 hover:bg-gold/5"
                 >
-                  <p className="section-label mb-2">{label}</p>
-                  <h3 className="text-base font-medium text-foreground">{title}</h3>
+                  <p className="section-label mb-2 transition-colors group-hover:text-gold">
+                    {service.category}
+                  </p>
+                  <h3 className="text-base font-medium text-foreground transition-colors group-hover:text-gold">
+                    {service.name}
+                  </h3>
+                </article>
+              ))}
+            </div>
+            <p className="mt-8 text-sm text-muted">
+              Serviços exclusivos podem variar por unidade — consulte a equipe ao agendar.
+            </p>
+          </div>
+        </section>
+
+        <section id="conceito" className="relative overflow-hidden bg-surface/40 py-20 md:py-28">
+          <div className="mx-auto max-w-6xl px-5 md:px-8">
+            <div className="mb-12 max-w-2xl">
+              <p className="section-label mb-4">O conceito</p>
+              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+                O Conceito
+              </h2>
+            </div>
+            <div className="mb-12">
+              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+                {brand.promise}
+              </h2>
+              <p className="mt-6 text-base leading-relaxed text-muted md:text-lg">{brand.manifesto}</p>
+            </div>
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_srgb,var(--gold)_6%,transparent),transparent_70%)]" />
+            <div className="relative z-10 grid items-start gap-4 md:grid-cols-3">
+              {[
+                { label: 'Visão', value: brand.vision },
+                { label: 'Fundador', value: brand.founder },
+                { label: 'Parceiros', value: brand.partners.join(' · ') },
+              ].map((item) => (
+                <article key={item.label} className="card-border rounded-2xl p-6">
+                  <p className="section-label mb-3">{item.label}</p>
+                  <p className="text-base leading-relaxed text-foreground/90 md:text-lg">{item.value}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="conceito" className="relative overflow-hidden bg-surface/40 py-20 md:py-28">
+        <section className="relative overflow-hidden bg-surface/30 py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
-            <p className="section-label mb-4">O conceito</p>
-            <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
-              Beleza não é tendência de feed. É engenharia de cor, corte e experiência — com padrão
-              Guinness em cada detalhe.
-            </h2>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted md:text-lg">
-              Fundado em 2019 por Romeu Felipe e Henrique Rocha, o ROM Concept é o maior salão de
-              beleza do mundo pelo Guinness World Records.
-            </p>
+            <div className="mb-12 max-w-2xl">
+              <p className="section-label mb-4">Quem conduz</p>
+              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+                Romeu Felipe
+              </h2>
+            </div>
+            <div className="grid items-center gap-10 md:grid-cols-[0.85fr_1.15fr]">
+              <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-border">
+                <video
+                  src="/video/romeu-concept-loop.mp4"
+                  poster="/video/romeu-concept-poster.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 size-full object-cover object-top transition duration-700 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 flex items-end justify-center pb-6 pointer-events-none">
+                  <span className="flex size-14 items-center justify-center rounded-full border border-gold/50 bg-background/70 text-gold backdrop-blur-sm transition group-hover:scale-105 group-hover:border-gold group-hover:bg-gold/10">
+                    <Play className="size-6 fill-current pl-0.5" aria-hidden />
+                  </span>
+                </div>
+              </div>
+
+              <div className="relative min-h-[28rem] overflow-hidden rounded-3xl">
+                <Image
+                  src="/images/romeu-portrait.jpg"
+                  alt="Romeu Felipe"
+                  fill
+                  className="object-cover object-top opacity-40"
+                  sizes="(max-width: 768px) 100vw, 700px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/75 to-surface/35" />
+                <div className="relative z-10 p-6 md:p-10">
+                  <p className="section-label mb-3">
+                    Co-fundador ROM Concept · Educador Wella · Guinness World Records
+                  </p>
+                  <p className="text-base leading-relaxed text-muted md:text-lg">
+                    Iniciou como educador Wella e se tornou referência mundial em coloração e mechas
+                    criativas. Co-fundou o ROM Concept em 2019 — hoje o maior salão de beleza do
+                    mundo. Atende celebridades como Yasmin Brunet, Mariana Rios, Juliette e Ticiane
+                    Pinheiro.
+                  </p>
+                  <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                    {[
+                      { value: '2024', label: 'Guinness' },
+                      { value: '5.800 m²', label: 'ROM Concept' },
+                      { value: 'Educador', label: 'Wella' },
+                    ].map((item) => (
+                      <div
+                        key={item.label}
+                        className="rounded-xl border border-border bg-card/50 p-4"
+                      >
+                        <p className="font-serif text-2xl text-gold-strong">{item.value}</p>
+                        <p className="mt-1 text-xs text-muted">{item.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section id="galeria" className="border-t border-border bg-surface/50 py-20 md:py-28">
+        <section
+          id="galeria"
+          className="relative overflow-hidden border-t border-border bg-surface/50 py-20 md:py-28"
+        >
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Galeria</p>
-              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight md:text-5xl">
+              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
                 <span className="gold-text">ROM Concept</span>
               </h2>
+              <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
+                Do editorial à cadeira da cliente — a paleta e o método que Romeu Felipe desenvolveu
+                para cabelo brasileiro.
+              </p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                '/video/gallery-1-poster.jpg',
-                '/images/romeu-galeria-pinterest.jpg',
-                '/video/gallery-2-poster.jpg',
-              ].map((src) => (
-                <div key={src} className="relative aspect-video overflow-hidden rounded-2xl">
-                  <Image src={src} alt="ROM Concept" fill className="object-cover" sizes="33vw" />
-                </div>
-              ))}
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="relative aspect-square overflow-hidden rounded-2xl sm:col-span-2 sm:row-span-2 sm:aspect-auto sm:min-h-[420px]">
+                <Image
+                  src="/video/gallery-1-poster.jpg"
+                  alt="Styling ao vivo — ROM Concept"
+                  fill
+                  className="object-cover transition duration-500 hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/romeu-galeria-pinterest.jpg"
+                  alt="Romeu Felipe com cliente — parceria Wella"
+                  fill
+                  className="object-cover transition duration-500 hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                />
+              </div>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+                <Image
+                  src="/video/gallery-2-poster.jpg"
+                  alt="Fachada da unidade Av. Brasil — ROM Concept"
+                  fill
+                  className="object-cover transition duration-500 hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                />
+              </div>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl lg:col-start-4">
+                <Image
+                  src="/video/gallery-3-poster.jpg"
+                  alt="Resultado de coloração — ROM Concept"
+                  fill
+                  className="object-cover transition duration-500 hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -271,13 +515,59 @@ export default function Home() {
 
       <footer className="border-t border-border bg-surface/50">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8">
-          <p className="text-[0.65rem] font-semibold tracking-[0.28em] text-gold uppercase">
-            ROM Concept
-          </p>
-          <h2 className="mt-2 font-serif text-3xl text-foreground md:text-4xl">
-            Dois salões. Um conceito.
-          </h2>
-          <p className="mt-8 text-xs text-muted">© {new Date().getFullYear()} ROM Concept.</p>
+          <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
+            <div>
+              <p className="text-[0.65rem] font-semibold tracking-[0.28em] text-gold uppercase">
+                ROM Concept
+              </p>
+              <h2 className="mt-2 font-serif text-3xl text-foreground md:text-4xl">
+                Dois salões. Um conceito.
+              </h2>
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">{brand.promise}</p>
+              <p className="mt-4 text-xs text-muted">{brand.partners.join(' · ')}</p>
+              <div className="mt-4 space-y-1 text-sm text-muted">
+                <p>
+                  <a href="mailto:contato@romconcept.com.br" className="transition hover:text-gold">
+                    contato@romconcept.com.br
+                  </a>
+                </p>
+                <p>Brasil: (11) 2892-0096</p>
+                <p>Iguatemi: (11) 3815-0920</p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-3">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cta-primary inline-flex w-full items-center justify-center gap-2 rounded-full px-8 py-4 text-sm tracking-wide md:text-base"
+                href="https://wa.me/5511993021379?text=Ol%C3%A1!%20Quero%20agendar%20%23SeuMomentoROM%20no%20ROM%20Concept."
+              >
+                <MessageCircle className="size-4" aria-hidden />
+                Agendar #SeuMomentoROM
+              </a>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-card/60 px-6 py-3 text-sm text-foreground transition hover:border-gold/40 hover:text-gold"
+                href="https://wa.me/5511993021379?text=Ol%C3%A1!%20Quero%20agendar%20%23SeuMomentoROM%20no%20ROM%20Concept."
+              >
+                <MessageCircle className="size-4" aria-hidden />
+                Tirar dúvidas no WhatsApp
+              </a>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center text-sm text-muted transition hover:text-gold"
+                href="https://romconcept.com.br"
+              >
+                romconcept.com.br →
+              </a>
+            </div>
+          </div>
+          <div className="mt-12 flex flex-col gap-2 border-t border-border pt-8 text-xs text-muted md:flex-row md:items-center md:justify-between">
+            <p>© {new Date().getFullYear()} ROM Concept. Todos os direitos reservados.</p>
+            <p>Guinness World Records · Fundado em 2019</p>
+          </div>
         </div>
       </footer>
 
