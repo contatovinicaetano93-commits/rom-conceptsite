@@ -9,7 +9,7 @@ export function ServicesMarquee() {
     <>
       <div
         data-reveal
-        className="services-grid mx-auto max-w-6xl px-5 md:hidden"
+        className="services-grid mx-auto max-w-6xl px-5"
         aria-label="Serviços em destaque"
       >
         {services.map((service) => (
@@ -20,11 +20,7 @@ export function ServicesMarquee() {
         ))}
       </div>
 
-      <div
-        data-reveal
-        className="services-marquee hidden md:block"
-        aria-label="Serviços em destaque"
-      >
+      <div data-reveal className="services-marquee" aria-label="Serviços em destaque">
         <div className="services-marquee__track">
           {loop.map((service, index) => (
             <article
