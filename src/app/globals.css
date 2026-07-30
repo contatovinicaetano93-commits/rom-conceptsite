@@ -350,10 +350,21 @@ body {
 
 /* Services horizontal marquee — pause on hover (desktop) */
 .services-marquee {
+  display: none;
   overflow: hidden;
   margin-inline: calc(50% - 50vw);
   width: 100vw;
   mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    display: none;
+  }
+
+  .services-marquee {
+    display: block;
+  }
 }
 
 .services-marquee__track {
