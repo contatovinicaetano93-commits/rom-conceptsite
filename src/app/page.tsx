@@ -362,7 +362,7 @@ export default function Home() {
                   key={service.name}
                   data-reveal
                   style={{ '--reveal-delay': index * 70 } as CSSProperties}
-                  className="card-border group cursor-pointer rounded-2xl p-5 transition hover:border-gold/50 hover:bg-gold/5"
+                  className="card-border card-glow group cursor-pointer rounded-2xl p-5"
                 >
                   <p className="section-label mb-2 transition-colors group-hover:text-gold">
                     {service.category}
@@ -404,7 +404,7 @@ export default function Home() {
                   key={item.label}
                   data-reveal
                   style={{ '--reveal-delay': index * 100 } as CSSProperties}
-                  className="card-border rounded-2xl p-6"
+                  className="card-border card-glow rounded-2xl p-6"
                 >
                   <p className="section-label mb-3">{item.label}</p>
                   <p className="text-base leading-relaxed text-foreground/90 md:text-lg">{item.value}</p>
