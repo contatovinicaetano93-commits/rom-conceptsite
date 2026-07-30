@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import Image from 'next/image'
 import {
   AtSign,
@@ -13,6 +14,7 @@ import { CountUp } from '@/components/count-up'
 import { HeroCarousel } from '@/components/hero-carousel'
 import { MusicPlayer } from '@/components/music-player'
 import { ScrollProgress } from '@/components/scroll-progress'
+import { ScrollReveal } from '@/components/scroll-reveal'
 import { SiteIntro } from '@/components/site-intro'
 import {
   brand,
@@ -44,6 +46,7 @@ export default function Home() {
   return (
     <>
       <SiteIntro />
+      <ScrollReveal />
       <ScrollProgress />
 
       <header className="fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur-md transition-all duration-300">
@@ -176,13 +179,21 @@ export default function Home() {
         </section>
 
         <div className="mx-auto max-w-6xl px-5 md:px-8">
-          <div className="my-8 h-px origin-left bg-gradient-to-r from-transparent via-gold to-transparent" />
+          <div
+            data-reveal="soft"
+            className="my-8 h-px origin-left bg-gradient-to-r from-transparent via-gold to-transparent"
+          />
         </div>
 
         <section className="border-y border-border bg-surface/50 py-14 md:py-16">
           <div className="mx-auto grid max-w-5xl gap-x-6 gap-y-10 px-5 sm:grid-cols-2 md:grid-cols-4 md:px-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center text-center">
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                data-reveal
+                style={{ '--reveal-delay': index * 90 } as CSSProperties}
+                className="flex flex-col items-center text-center"
+              >
                 <div className="medallion-ring flex size-28 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-card/60 p-3 md:size-32">
                   <p className="font-serif text-lg leading-[1.15] text-gold-strong md:text-xl">
                     <CountUp value={stat.value} />
@@ -196,7 +207,7 @@ export default function Home() {
 
         <section id="unidades" className="bg-surface/30 py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
-            <div className="mb-12 max-w-2xl">
+            <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Onde estamos</p>
               <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
                 Duas unidades em São Paulo
@@ -208,11 +219,13 @@ export default function Home() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 md:gap-8">
-              {salons.map((salon) => {
+              {salons.map((salon, index) => {
                 const styles = accentStyles[salon.accent]
                 return (
                   <div
                     key={salon.id}
+                    data-reveal
+                    style={{ '--reveal-delay': index * 120 } as CSSProperties}
                     className={`card-border flex h-full flex-col overflow-hidden rounded-3xl ${styles.card}`}
                   >
                     <article>
@@ -328,7 +341,7 @@ export default function Home() {
 
         <section id="servicos" className="py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
-            <div className="mb-12 max-w-2xl">
+            <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Serviços</p>
               <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
                 O que fazemos
@@ -339,9 +352,11 @@ export default function Home() {
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {services.map((service) => (
+              {services.map((service, index) => (
                 <article
                   key={service.name}
+                  data-reveal
+                  style={{ '--reveal-delay': index * 70 } as CSSProperties}
                   className="card-border group cursor-pointer rounded-2xl p-5 transition hover:border-gold/50 hover:bg-gold/5"
                 >
                   <p className="section-label mb-2 transition-colors group-hover:text-gold">
@@ -353,7 +368,7 @@ export default function Home() {
                 </article>
               ))}
             </div>
-            <p className="mt-8 text-sm text-muted">
+            <p data-reveal="soft" className="mt-8 text-sm text-muted">
               Serviços exclusivos podem variar por unidade — consulte a equipe ao agendar.
             </p>
           </div>
@@ -361,13 +376,13 @@ export default function Home() {
 
         <section id="conceito" className="relative overflow-hidden bg-surface/40 py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
-            <div className="mb-12 max-w-2xl">
+            <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">O conceito</p>
               <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
                 O Conceito
               </h2>
             </div>
-            <div className="mb-12">
+            <div data-reveal className="mb-12">
               <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
                 {brand.promise}
               </h2>
@@ -379,8 +394,13 @@ export default function Home() {
                 { label: 'Visão', value: brand.vision },
                 { label: 'Fundador', value: brand.founder },
                 { label: 'Parceiros', value: brand.partners.join(' · ') },
-              ].map((item) => (
-                <article key={item.label} className="card-border rounded-2xl p-6">
+              ].map((item, index) => (
+                <article
+                  key={item.label}
+                  data-reveal
+                  style={{ '--reveal-delay': index * 100 } as CSSProperties}
+                  className="card-border rounded-2xl p-6"
+                >
                   <p className="section-label mb-3">{item.label}</p>
                   <p className="text-base leading-relaxed text-foreground/90 md:text-lg">{item.value}</p>
                 </article>
@@ -391,14 +411,17 @@ export default function Home() {
 
         <section className="relative overflow-hidden bg-surface/30 py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
-            <div className="mb-12 max-w-2xl">
+            <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Quem conduz</p>
               <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
                 Romeu Felipe
               </h2>
             </div>
             <div className="grid items-center gap-10 md:grid-cols-[0.85fr_1.15fr]">
-              <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-border">
+              <div
+                data-reveal
+                className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-border"
+              >
                 <video
                   src="/video/romeu-concept-loop.mp4"
                   poster="/video/romeu-concept-poster.jpg"
@@ -416,7 +439,11 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="relative min-h-[28rem] overflow-hidden rounded-3xl">
+              <div
+                data-reveal
+                style={{ '--reveal-delay': 120 } as CSSProperties}
+                className="relative min-h-[28rem] overflow-hidden rounded-3xl"
+              >
                 <Image
                   src="/images/romeu-portrait.jpg"
                   alt="Romeu Felipe"
@@ -440,9 +467,11 @@ export default function Home() {
                       { value: '2024', label: 'Guinness' },
                       { value: '5.800 m²', label: 'ROM Concept' },
                       { value: 'Educador', label: 'Wella' },
-                    ].map((item) => (
+                    ].map((item, index) => (
                       <div
                         key={item.label}
+                        data-reveal="soft"
+                        style={{ '--reveal-delay': 180 + index * 80 } as CSSProperties}
                         className="rounded-xl border border-border bg-card/50 p-4"
                       >
                         <p className="font-serif text-2xl text-gold-strong">{item.value}</p>
@@ -461,7 +490,7 @@ export default function Home() {
           className="relative overflow-hidden border-t border-border bg-surface/50 py-20 md:py-28"
         >
           <div className="mx-auto max-w-6xl px-5 md:px-8">
-            <div className="mb-12 max-w-2xl">
+            <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Galeria</p>
               <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
                 <span className="gold-text">ROM Concept</span>
@@ -472,7 +501,10 @@ export default function Home() {
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="relative aspect-square overflow-hidden rounded-2xl sm:col-span-2 sm:row-span-2 sm:aspect-auto sm:min-h-[420px]">
+              <div
+                data-reveal
+                className="relative aspect-square overflow-hidden rounded-2xl sm:col-span-2 sm:row-span-2 sm:aspect-auto sm:min-h-[420px]"
+              >
                 <Image
                   src="/video/gallery-1-poster.jpg"
                   alt="Styling ao vivo — ROM Concept"
@@ -481,7 +513,11 @@ export default function Home() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+              <div
+                data-reveal
+                style={{ '--reveal-delay': 80 } as CSSProperties}
+                className="relative aspect-[4/5] overflow-hidden rounded-2xl"
+              >
                 <Image
                   src="/images/romeu-galeria-pinterest.jpg"
                   alt="Romeu Felipe com cliente — parceria Wella"
@@ -490,7 +526,11 @@ export default function Home() {
                   sizes="(max-width: 768px) 100vw, 25vw"
                 />
               </div>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+              <div
+                data-reveal
+                style={{ '--reveal-delay': 140 } as CSSProperties}
+                className="relative aspect-[4/5] overflow-hidden rounded-2xl"
+              >
                 <Image
                   src="/video/gallery-2-poster.jpg"
                   alt="Fachada da unidade Av. Brasil — ROM Concept"
@@ -499,7 +539,11 @@ export default function Home() {
                   sizes="(max-width: 768px) 100vw, 25vw"
                 />
               </div>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl lg:col-start-4">
+              <div
+                data-reveal
+                style={{ '--reveal-delay': 200 } as CSSProperties}
+                className="relative aspect-[4/5] overflow-hidden rounded-2xl lg:col-start-4"
+              >
                 <Image
                   src="/video/gallery-3-poster.jpg"
                   alt="Resultado de coloração — ROM Concept"
@@ -515,7 +559,7 @@ export default function Home() {
 
       <footer className="border-t border-border bg-surface/50">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8">
-          <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
+          <div data-reveal className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
             <div>
               <p className="text-[0.65rem] font-semibold tracking-[0.28em] text-gold uppercase">
                 ROM Concept
