@@ -1,13 +1,10 @@
 import type { CSSProperties } from 'react'
 import Image from 'next/image'
 import {
-  AtSign,
   Award,
   Clock,
   MapPin,
   MessageCircle,
-  Navigation,
-  Phone,
   Play,
 } from 'lucide-react'
 import { CountUp } from '@/components/count-up'
@@ -20,9 +17,9 @@ import { ScrollReveal } from '@/components/scroll-reveal'
 import { ServicesMarquee } from '@/components/services-marquee'
 import { SideGuide } from '@/components/side-guide'
 import { SiteIntro } from '@/components/site-intro'
+import { UnidadesStage } from '@/components/unidades-stage'
 import {
   brand,
-  mapUrl,
   salonWhatsappUrl,
   salons,
   stats,
@@ -225,124 +222,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2 md:gap-8">
-              {salons.map((salon, index) => {
-                const styles = accentStyles[salon.accent]
-                return (
-                  <div
-                    key={salon.id}
-                    data-reveal
-                    style={{ '--reveal-delay': index * 120 } as CSSProperties}
-                    className={`card-border flex h-full flex-col overflow-hidden rounded-3xl ${styles.card}`}
-                  >
-                    <article>
-                      <div className="relative mb-6 -mx-0 overflow-hidden">
-                        <Image
-                          src={salon.image}
-                          alt={salon.name}
-                          width={600}
-                          height={400}
-                          className="h-auto w-full object-cover"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                      </div>
-                      <div className="px-6 pb-6 md:px-8 md:pb-8">
-                        <div className="mb-4 flex items-start justify-between gap-4">
-                          <div>
-                            <span
-                              className={`inline-flex items-center rounded-full border px-3 py-1 text-[0.65rem] font-semibold tracking-[0.2em] uppercase ${styles.badge}`}
-                            >
-                              {salon.shortName}
-                            </span>
-                            <h3 className="mt-4 font-serif text-2xl text-foreground md:text-3xl">
-                              {salon.name}
-                            </h3>
-                          </div>
-                          <span
-                            className={`mt-2 size-2.5 shrink-0 rounded-full ${styles.dot}`}
-                            aria-hidden
-                          />
-                        </div>
-
-                        <div className="mb-4 space-y-3 text-sm text-muted">
-                          <div className="flex items-start gap-2">
-                            <MapPin className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden />
-                            <div>
-                              <p className="text-foreground/90">{salon.location}</p>
-                              <p>{salon.address}</p>
-                              {salon.floor ? <p>{salon.floor}</p> : null}
-                              <p>São Paulo — SP · CEP {salon.cep}</p>
-                            </div>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Phone className="size-4 shrink-0 text-gold" aria-hidden />
-                            <a
-                              href={`tel:${salon.phone.replace(/\D/g, '')}`}
-                              className="hover:text-gold"
-                            >
-                              {salon.phone}
-                            </a>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <AtSign className="size-4 shrink-0 text-gold" aria-hidden />
-                            <a
-                              href={salon.instagram}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:text-gold"
-                            >
-                              @{salon.instagram.split('/').pop()}
-                            </a>
-                          </div>
-                        </div>
-
-                        <p className="mb-6 text-base leading-relaxed text-muted">{salon.description}</p>
-
-                        <ul className="mb-8 space-y-2">
-                          {salon.highlights.map((item) => (
-                            <li
-                              key={item}
-                              className="flex items-start gap-2 text-sm text-foreground/90"
-                            >
-                              <span
-                                className={`mt-1.5 size-1.5 shrink-0 rounded-full ${styles.dot}`}
-                              />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-
-                        <div className="mt-auto flex flex-col gap-3 sm:flex-row">
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="cta-primary inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm uppercase"
-                            href={salonWhatsappUrl(salon)}
-                          >
-                            <MessageCircle className="size-4" aria-hidden />
-                            Agendar aqui
-                          </a>
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="cta-secondary inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm"
-                            href={mapUrl(salon.mapQuery)}
-                          >
-                            <Navigation className="size-4" aria-hidden />
-                            Como chegar
-                          </a>
-                        </div>
-
-                        <p className="mt-4 flex items-center gap-2 text-xs text-muted">
-                          <Clock className="size-3.5 shrink-0" aria-hidden />
-                          {salon.hours}
-                        </p>
-                      </div>
-                    </article>
-                  </div>
-                )
-              })}
-            </div>
+            <UnidadesStage />
           </div>
         </section>
 
