@@ -656,6 +656,7 @@ body {
   filter: none;
   transform: translate3d(var(--drag-x, 0px), 0, 0) rotateY(var(--drag-rot, 0deg)) scale(1);
   pointer-events: auto;
+  user-select: text;
 }
 
 .unidades-stage__card.is-back-left {
@@ -674,6 +675,11 @@ body {
   transform: translate3d(18%, 4%, -220px) rotateY(-18deg) scale(0.86);
   pointer-events: auto;
   cursor: pointer;
+}
+
+.unidades-stage__card.is-back-left *,
+.unidades-stage__card.is-back-right * {
+  pointer-events: none;
 }
 
 .unidades-stage__hint {

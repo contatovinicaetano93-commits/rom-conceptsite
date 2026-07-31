@@ -249,7 +249,9 @@ export function UnidadesStage() {
         </div>
       </div>
 
-      <p className="unidades-stage__hint">Arraste ou escolha a unidade · {active + 1}/2</p>
+      <p className="unidades-stage__hint">
+        Arraste ou escolha a unidade · {active + 1}/{salons.length}
+      </p>
     </div>
   )
 }
