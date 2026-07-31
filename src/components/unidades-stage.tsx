@@ -50,11 +50,11 @@ function SalonCard({ salon }: { salon: SalonUnit }) {
           width={600}
           height={400}
           className="h-auto w-full object-cover"
-          sizes="(max-width: 768px) 92vw, 520px"
+          sizes="(max-width: 768px) 92vw, 45vw"
           draggable={false}
         />
       </div>
-      <div className="flex flex-1 flex-col px-6 pb-6 md:px-8 md:pb-8">
+      <div className="flex flex-1 flex-col px-6 pb-6 md:px-7 md:pb-8">
         <div className="mb-4 flex items-start justify-between gap-4">
           <div>
             <span
@@ -221,25 +221,23 @@ export function UnidadesStage() {
       >
         <div className="unidades-stage__deck">
           {salons.map((salon, index) => {
-            const offset = index - active
-            const depthClass =
-              offset === 0 ? 'is-front' : offset < 0 ? 'is-back-left' : 'is-back-right'
+            const isActive = index === active
+            const sideClass = index === 0 ? 'is-left' : 'is-right'
             const style =
-              offset === 0 && dragX !== 0
+              isActive && dragX !== 0
                 ? ({
-                    '--drag-x': `${dragX * 0.35}px`,
-                    '--drag-rot': `${dragX * -0.03}deg`,
+                    '--drag-x': `${dragX * 0.2}px`,
+                    '--drag-rot': `${dragX * -0.02}deg`,
                   } as CSSProperties)
                 : undefined
 
             return (
               <div
                 key={salon.id}
-                className={`unidades-stage__card ${depthClass}`}
+                className={`unidades-stage__card ${sideClass} ${isActive ? 'is-active' : 'is-idle'}`}
                 style={style}
-                aria-hidden={offset !== 0}
                 onClick={() => {
-                  if (offset !== 0) setActive(index)
+                  if (!isActive) setActive(index)
                 }}
               >
                 <SalonCard salon={salon} />
