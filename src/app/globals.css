@@ -226,6 +226,27 @@ body {
   }
 }
 
+/* Shared sticky scroll-story steps */
+.scroll-story-step,
+.hero-story__step {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(2px);
+  transition:
+    opacity 0.55s var(--ease-out-expo),
+    transform 0.55s var(--ease-out-expo),
+    filter 0.55s var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.scroll-story-step.is-on,
+.hero-story__step.is-on {
+  opacity: 1;
+  transform: translateY(0);
+  filter: none;
+  pointer-events: auto;
+}
+
 /* Hero sticky scroll story — page stays pinned while phrases reveal */
 .hero-story {
   position: relative;
@@ -239,22 +260,46 @@ body {
   overflow: hidden;
 }
 
-.hero-story__step {
-  opacity: 0;
-  transform: translateY(22px);
-  filter: blur(2px);
-  transition:
-    opacity 0.55s var(--ease-out-expo),
-    transform 0.55s var(--ease-out-expo),
-    filter 0.55s var(--ease-out-expo);
-  pointer-events: none;
+/* Unidades sticky intro above the cards */
+.unidades-story {
+  position: relative;
+  height: 260vh;
 }
 
-.hero-story__step.is-on {
-  opacity: 1;
-  transform: translateY(0);
-  filter: none;
-  pointer-events: auto;
+.unidades-story__sticky {
+  position: sticky;
+  top: 0;
+  min-height: 100svh;
+  max-height: 100svh;
+  overflow-x: clip;
+  overflow-y: auto;
+}
+
+.unidades-story__progress {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.4rem;
+  left: 1.25rem;
+  z-index: 12;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--border) 80%, transparent);
+}
+
+@media (min-width: 1024px) {
+  .unidades-story__progress {
+    right: 5.5rem;
+  }
+}
+
+.unidades-story__progress-bar {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 50%, transparent);
+  transition: width 0.35s var(--ease-out-expo);
 }
 
 .hero-story__progress {
@@ -288,20 +333,29 @@ body {
   .hero-story {
     height: 360vh;
   }
+
+  .unidades-story {
+    height: 220vh;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-story {
+  .hero-story,
+  .unidades-story {
     height: auto;
   }
 
-  .hero-story__sticky {
+  .hero-story__sticky,
+  .unidades-story__sticky {
     position: relative;
     height: auto;
     min-height: 100svh;
+    max-height: none;
+    overflow: visible;
   }
 
-  .hero-story__step {
+  .hero-story__step,
+  .scroll-story-step {
     opacity: 1;
     transform: none;
     filter: none;
@@ -309,7 +363,8 @@ body {
     transition: none;
   }
 
-  .hero-story__progress {
+  .hero-story__progress,
+  .unidades-story__progress {
     display: none;
   }
 }

@@ -11,7 +11,7 @@ import { ServicesMarquee } from '@/components/services-marquee'
 import { SideGuide } from '@/components/side-guide'
 import { SiteIntro } from '@/components/site-intro'
 import { StatsOrbit } from '@/components/stats-orbit'
-import { UnidadesStage } from '@/components/unidades-stage'
+import { UnidadesStory } from '@/components/unidades-story'
 import { brand } from '@/lib/content'
 
 export default function Home() {
@@ -75,22 +75,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="unidades" className="bg-surface/30 py-20 md:py-28">
-          <div className="mx-auto max-w-6xl px-5 md:px-8">
-            <div data-reveal="lift" className="mb-12 max-w-2xl">
-              <p className="section-label mb-4">Onde estamos</p>
-              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
-                Duas unidades em São Paulo
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
-                Escolha a unidade mais conveniente e agende #SeuMomentoROM pelo WhatsApp. A equipe
-                confirma horário e serviço com você.
-              </p>
-            </div>
-
-            <UnidadesStage />
-          </div>
-        </section>
+        <UnidadesStory />
 
         <section id="servicos" className="py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
