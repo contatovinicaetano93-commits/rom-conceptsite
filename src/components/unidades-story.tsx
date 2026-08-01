@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { UnidadesStage } from '@/components/unidades-stage'
 
-const STEP_COUNT = 4
+const STEP_COUNT = 3
 
 function stepFromProgress(progress: number) {
   if (progress <= 0) return 0
@@ -12,7 +12,7 @@ function stepFromProgress(progress: number) {
 }
 
 export function UnidadesStory() {
-  const trackRef = useRef<HTMLElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
   const [step, setStep] = useState(0)
   const [reduced, setReduced] = useState(false)
 
@@ -54,41 +54,45 @@ export function UnidadesStory() {
   const on = (index: number) => reduced || step >= index
 
   return (
-    <section id="unidades" ref={trackRef} className="unidades-story bg-surface/30">
-      <div className="unidades-story__sticky">
-        <div className="mx-auto flex h-full max-w-6xl flex-col justify-center px-5 py-24 md:px-8 md:py-28">
-          <div className="mb-10 max-w-2xl md:mb-12">
-            <p className={`scroll-story-step section-label mb-4 ${on(0) ? 'is-on' : ''}`}>
-              Onde estamos
-            </p>
-            <h2
-              className={`scroll-story-step font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl ${
-                on(1) ? 'is-on' : ''
-              }`}
-            >
-              Duas unidades em São Paulo
-            </h2>
-            <p
-              className={`scroll-story-step mt-4 text-base leading-relaxed text-muted md:text-lg ${
-                on(2) ? 'is-on' : ''
-              }`}
-            >
-              Escolha a unidade mais conveniente e agende #SeuMomentoROM pelo WhatsApp. A equipe
-              confirma horário e serviço com você.
-            </p>
+    <section id="unidades" className="bg-surface/30">
+      {/* Sticky effect only for the intro copy */}
+      <div ref={trackRef} className="unidades-story">
+        <div className="unidades-story__sticky">
+          <div className="mx-auto flex h-full max-w-6xl items-center px-5 py-20 md:px-8 md:py-28">
+            <div className="max-w-2xl">
+              <p className={`scroll-story-step section-label mb-4 ${on(0) ? 'is-on' : ''}`}>
+                Onde estamos
+              </p>
+              <h2
+                className={`scroll-story-step font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl ${
+                  on(1) ? 'is-on' : ''
+                }`}
+              >
+                Duas unidades em São Paulo
+              </h2>
+              <p
+                className={`scroll-story-step mt-4 text-base leading-relaxed text-muted md:text-lg ${
+                  on(2) ? 'is-on' : ''
+                }`}
+              >
+                Escolha a unidade mais conveniente e agende #SeuMomentoROM pelo WhatsApp. A equipe
+                confirma horário e serviço com você.
+              </p>
+            </div>
           </div>
 
-          <div className={`scroll-story-step ${on(3) ? 'is-on' : ''}`}>
-            <UnidadesStage />
+          <div className="unidades-story__progress" aria-hidden>
+            <div
+              className="unidades-story__progress-bar"
+              style={{ width: `${((step + 1) / STEP_COUNT) * 100}%` }}
+            />
           </div>
         </div>
+      </div>
 
-        <div className="unidades-story__progress" aria-hidden>
-          <div
-            className="unidades-story__progress-bar"
-            style={{ width: `${((step + 1) / STEP_COUNT) * 100}%` }}
-          />
-        </div>
+      {/* Cards stay in normal layout, as before */}
+      <div className="mx-auto max-w-6xl px-5 pb-20 md:px-8 md:pb-28">
+        <UnidadesStage />
       </div>
     </section>
   )
