@@ -134,6 +134,13 @@ h3,
 .font-serif {
   font-family: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
   font-weight: 400;
+}
+
+/* Display titles — tight leading, slight negative tracking */
+h1,
+h2,
+h3,
+.font-display {
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
