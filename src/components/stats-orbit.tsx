@@ -15,13 +15,17 @@ export function StatsOrbit() {
               className="stats-orbit__item"
               style={{ '--orbit-index': index } as CSSProperties}
             >
-              <div className="stats-orbit__face">
-                <div className="medallion-ring stats-orbit__medallion flex shrink-0 items-center justify-center rounded-full border border-gold/30 bg-card/60 p-3">
-                  <p className="font-serif text-lg leading-[1.15] text-gold-strong md:text-xl">
-                    <CountUp value={stat.value} />
-                  </p>
+              {/* Cancels ring spin so the face stays camera-facing */}
+              <div className="stats-orbit__billboard">
+                {/* Cancels each item's orbit angle so every medallion reads upright */}
+                <div className="stats-orbit__face">
+                  <div className="medallion-ring stats-orbit__medallion flex shrink-0 items-center justify-center rounded-full border border-gold/30 bg-card/60 p-3">
+                    <p className="font-serif text-lg leading-[1.15] text-gold-strong md:text-xl">
+                      <CountUp value={stat.value} />
+                    </p>
+                  </div>
+                  <p className="stats-orbit__label">{stat.label}</p>
                 </div>
-                <p className="stats-orbit__label">{stat.label}</p>
               </div>
             </div>
           ))}
