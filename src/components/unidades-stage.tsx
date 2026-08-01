@@ -166,7 +166,7 @@ export function UnidadesStage() {
   }
 
   return (
-    <div className="unidades-stage" data-reveal>
+    <div className="unidades-stage">
       <div className="unidades-stage__tabs" role="tablist" aria-label="Escolher unidade">
         {salons.map((salon, index) => {
           const styles = accentStyles[salon.accent]
