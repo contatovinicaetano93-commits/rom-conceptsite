@@ -14,6 +14,10 @@
   --brasil: #c4a35a;
   --iguatemi: #7eb8a8;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Resolve against next/font face vars on <html> — keep string fallbacks */
+  --font-sans: var(--font-sans-face), generalSans, ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
+  --font-serif: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
 }
 
 @theme inline {
@@ -28,10 +32,10 @@
   --color-gold-bright: var(--gold-bright);
   --color-brasil: var(--brasil);
   --color-iguatemi: var(--iguatemi);
-  --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-display-face), ui-serif, Georgia, serif;
+  --font-sans: var(--font-sans-face), generalSans, ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
   /* Map legacy serif utility to the single display family (2-family system) */
-  --font-serif: var(--font-display-face), ui-serif, Georgia, serif;
+  --font-serif: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
 }
 
 html {
@@ -41,8 +45,9 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-sans-face), generalSans, ui-sans-serif, system-ui, sans-serif;
   font-weight: 400;
+  letter-spacing: 0.01em;
   line-height: 1.55;
 }
 
@@ -121,20 +126,16 @@ body {
   font-weight: 600;
 }
 
+/* Force Playfair on every title surface — not only intro */
+h1,
+h2,
+h3,
 .font-display,
 .font-serif {
-  font-family: var(--font-display);
+  font-family: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
   font-weight: 400;
-}
-
-/* Large display titles — tight leading, slight negative tracking, never bold */
-.font-display,
-h1.font-display,
-h2.font-serif,
-h3.font-serif {
   letter-spacing: -0.02em;
   line-height: 1.1;
-  font-weight: 400;
 }
 
 .card-border {
@@ -457,16 +458,18 @@ h3.font-serif {
 .stats-orbit__value {
   position: relative;
   z-index: 1;
+  font-family: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
   font-size: 1.05rem;
-  font-weight: 500;
+  font-weight: 400;
+  letter-spacing: -0.02em;
   color: var(--gold-bright);
   text-shadow: 0 0 18px color-mix(in srgb, var(--gold) 45%, transparent);
 }
 
 .stats-orbit__value--hero {
   font-size: 3rem;
-  font-weight: 500;
-  letter-spacing: 0;
+  font-weight: 400;
+  letter-spacing: -0.02em;
   line-height: 1;
   color: var(--gold-bright);
 }
@@ -588,7 +591,7 @@ h3.font-serif {
 }
 
 .site-intro__line--primary {
-  font-family: var(--font-display);
+  font-family: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
   font-size: clamp(1.6rem, 5vw, 3rem);
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -611,7 +614,7 @@ h3.font-serif {
 
 .site-intro__line--secondary {
   margin-top: 1rem;
-  font-family: var(--font-sans);
+  font-family: var(--font-sans-face), generalSans, ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(0.95rem, 2.8vw, 1.35rem);
   font-weight: 500;
   letter-spacing: 0.18em;
@@ -746,9 +749,10 @@ h3.font-serif {
   align-items: center;
   gap: 1.1rem;
   padding-inline: 0.35rem 0;
-  font-size: clamp(0.72rem, 1.4vw, 0.85rem);
-  font-weight: 600;
-  letter-spacing: 0.28em;
+  font-family: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
+  font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--foreground) 55%, transparent);
   white-space: nowrap;
