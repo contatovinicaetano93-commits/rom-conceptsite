@@ -46,9 +46,39 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans-face), generalSans, ui-sans-serif, system-ui, sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  line-height: 1.55;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.65;
+}
+
+/* Section / card messages — clearly lighter & airier than UI labels */
+.copy {
+  font-family: var(--font-sans-face), generalSans, ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--muted) 88%, var(--foreground));
+  text-wrap: pretty;
+}
+
+.copy--bright {
+  color: color-mix(in srgb, var(--foreground) 88%, var(--muted));
+}
+
+.copy--sm {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+  .copy {
+    font-size: 1.3125rem;
+  }
+
+  .copy--sm {
+    font-size: 1.0625rem;
+  }
 }
 
 ::selection {
@@ -119,6 +149,7 @@ body {
 }
 
 .section-label {
+  font-family: var(--font-sans-face), generalSans, ui-sans-serif, system-ui, sans-serif;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--gold);
@@ -180,6 +211,7 @@ h3,
     var(--gold-bright) 100%
   );
   color: #0a0908;
+  font-family: var(--font-sans-face), generalSans, ui-sans-serif, system-ui, sans-serif;
   letter-spacing: 0.04em;
   font-weight: 600;
   transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;

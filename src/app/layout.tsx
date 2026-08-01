@@ -14,6 +14,11 @@ const playfair = Playfair_Display({
 const generalSans = localFont({
   src: [
     {
+      path: '../fonts/general-sans/GeneralSans-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
       path: '../fonts/general-sans/GeneralSans-Regular.woff2',
       weight: '400',
       style: 'normal',
