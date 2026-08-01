@@ -81,7 +81,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Serviços</p>
-              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+              <h2 className="font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl">
                 O que fazemos
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
@@ -104,12 +104,12 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">O conceito</p>
-              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+              <h2 className="font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl">
                 O Conceito
               </h2>
             </div>
             <div data-reveal className="mb-12">
-              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+              <h2 className="font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl">
                 {brand.promise}
               </h2>
               <p className="mt-6 text-base leading-relaxed text-muted md:text-lg">{brand.manifesto}</p>
@@ -141,7 +141,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Quem conduz</p>
-              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+              <h2 className="font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl">
                 Romeu Felipe
               </h2>
             </div>
@@ -222,7 +222,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Galeria</p>
-              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+              <h2 className="font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl">
                 <span className="gold-text">ROM Concept</span>
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">

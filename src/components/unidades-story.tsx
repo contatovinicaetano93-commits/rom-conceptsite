@@ -64,7 +64,7 @@ export function UnidadesStory() {
                 Onde estamos
               </p>
               <h2
-                className={`scroll-story-step font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl ${
+                className={`scroll-story-step font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl ${
                   on(1) ? 'is-on' : ''
                 }`}
               >
