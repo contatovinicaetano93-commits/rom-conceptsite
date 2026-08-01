@@ -249,11 +249,6 @@ body {
   animation: stats-orbit-spin var(--orbit-duration) linear infinite;
 }
 
-.stats-orbit:hover .stats-orbit__ring,
-.stats-orbit:hover .stats-orbit__billboard {
-  animation-play-state: paused;
-}
-
 .stats-orbit__item {
   position: absolute;
   inset: 0;
@@ -261,6 +256,8 @@ body {
   place-items: center;
   transform-style: preserve-3d;
   transform: rotateY(calc(var(--orbit-index) * 90deg)) translateZ(var(--orbit-radius));
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Cancels ring rotation */
@@ -269,6 +266,8 @@ body {
   place-items: center;
   transform-style: preserve-3d;
   animation: stats-orbit-spin var(--orbit-duration) linear infinite reverse;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Cancels each item's base orbit angle — keeps every face readable */
@@ -280,17 +279,21 @@ body {
   text-align: center;
   transform-style: preserve-3d;
   transform: rotateY(calc(var(--orbit-index) * -90deg));
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .stats-orbit__medallion {
   width: 7.5rem;
   height: 7.5rem;
+  overflow: hidden;
+  isolation: isolate;
   border: 1px solid color-mix(in srgb, var(--gold-bright) 70%, transparent);
   background:
     radial-gradient(
       circle at 50% 35%,
-      color-mix(in srgb, var(--gold) 28%, transparent),
-      color-mix(in srgb, var(--card-elevated) 92%, transparent) 62%
+      color-mix(in srgb, var(--gold) 28%, var(--card-elevated)),
+      var(--card-elevated) 62%
     );
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent),
@@ -301,6 +304,8 @@ body {
 }
 
 .stats-orbit__value {
+  position: relative;
+  z-index: 1;
   font-size: 1.05rem;
   font-weight: 500;
   color: var(--gold-bright);
@@ -308,9 +313,10 @@ body {
 }
 
 .stats-orbit__value--hero {
-  font-size: 2.35rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
   color: var(--gold-bright);
 }
 
@@ -352,7 +358,7 @@ body {
   }
 
   .stats-orbit__value--hero {
-    font-size: 2.65rem;
+    font-size: 3.35rem;
   }
 
   .stats-orbit__label {
@@ -386,7 +392,7 @@ body {
   }
 
   .stats-orbit__value--hero {
-    font-size: 2.1rem;
+    font-size: 2.75rem;
   }
 }
 

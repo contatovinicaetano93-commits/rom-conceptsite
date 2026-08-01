@@ -45,7 +45,7 @@ export const stats = [
   { value: 'Guinness', label: 'Maior salão de beleza do mundo · 2024' },
   { value: '337 cadeiras', label: '227 na Av. Brasil + 110 no Iguatemi' },
   { value: '5.800 m²', label: '4.000 m² Av. Brasil + 1.800 m² Iguatemi' },
-  { value: '02', label: 'Unidades · Jardins e Shopping Iguatemi' },
+  { value: '2', label: 'Unidades · Jardins e Shopping Iguatemi' },
 ] as const
 
 export const services = [
