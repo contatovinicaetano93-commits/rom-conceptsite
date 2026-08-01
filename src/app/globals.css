@@ -312,10 +312,15 @@ h3,
   height: 180vh;
 }
 
-/* Conceito — cards reveal, then arrow finishes before unlock */
+/* Conceito — cards reveal, then arrow finishes before unlock.
+   Extra viewport height so each card phase stays readable (~+1s/step). */
 .conceito-story {
   position: relative;
-  height: 240vh;
+  height: 390vh;
+}
+
+.conceito-story .scroll-story-step {
+  transition-duration: 0.85s;
 }
 
 .text-story__sticky,
@@ -405,7 +410,7 @@ h3,
   }
 
   .conceito-story {
-    height: 200vh;
+    height: 330vh;
   }
 }
 

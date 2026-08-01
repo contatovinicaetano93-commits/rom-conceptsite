@@ -5,7 +5,7 @@ import { brand } from '@/lib/content'
 
 const CARD_STEPS = 3
 /** Share of the sticky track reserved for drawing the arrow after cards are on */
-const ARROW_SHARE = 0.35
+const ARROW_SHARE = 0.3
 
 const cards = [
   { label: 'Visão', value: brand.vision },
