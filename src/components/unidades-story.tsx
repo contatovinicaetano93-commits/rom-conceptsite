@@ -64,7 +64,7 @@ export function UnidadesStory() {
                 Onde estamos
               </p>
               <h2
-                className={`scroll-story-step font-display text-3xl text-foreground md:text-5xl ${
+                className={`scroll-story-step display-section text-foreground ${
                   on(1) ? 'is-on' : ''
                 }`}
               >

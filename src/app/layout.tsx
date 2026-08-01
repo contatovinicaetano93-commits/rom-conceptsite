@@ -8,6 +8,7 @@ const playfair = Playfair_Display({
   weight: ['400'],
   style: ['normal', 'italic'],
   variable: '--font-display',
+  display: 'swap',
 })
 
 const generalSans = localFont({
@@ -53,7 +54,11 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${playfair.variable} ${generalSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-background font-sans pb-24 md:pb-0">{children}</body>
+      <body
+        className={`${generalSans.className} min-h-full bg-background pb-24 md:pb-0`}
+      >
+        {children}
+      </body>
     </html>
   )
 }

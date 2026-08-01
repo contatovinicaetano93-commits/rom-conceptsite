@@ -81,7 +81,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Serviços</p>
-              <h2 className="font-display text-3xl text-foreground md:text-5xl">
+              <h2 className="display-section text-foreground">
                 O que fazemos
               </h2>
               <p className="mt-4 font-sans text-base leading-[1.55] text-muted md:text-lg">
@@ -104,12 +104,12 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">O conceito</p>
-              <h2 className="font-display text-3xl text-foreground md:text-5xl">
+              <h2 className="display-section text-foreground">
                 O Conceito
               </h2>
             </div>
             <div data-reveal className="mb-12">
-              <h2 className="font-display text-3xl text-foreground md:text-5xl">
+              <h2 className="display-section text-foreground">
                 {brand.promise}
               </h2>
               <p className="mt-6 font-sans text-base leading-[1.55] text-muted md:text-lg">{brand.manifesto}</p>
@@ -141,7 +141,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Quem conduz</p>
-              <h2 className="font-display text-3xl text-foreground md:text-5xl">
+              <h2 className="display-section text-foreground">
                 Romeu Felipe
               </h2>
             </div>
@@ -222,7 +222,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Galeria</p>
-              <h2 className="font-display text-3xl text-foreground md:text-5xl">
+              <h2 className="display-section text-foreground">
                 <span className="gold-text">ROM Concept</span>
               </h2>
               <p className="mt-4 font-sans text-base leading-[1.55] text-muted md:text-lg">
@@ -294,7 +294,7 @@ export default function Home() {
               <p className="text-[0.65rem] font-semibold tracking-[0.28em] text-gold uppercase">
                 ROM Concept
               </p>
-              <h2 className="font-display mt-2 text-3xl text-foreground md:text-4xl">
+              <h2 className="display-section mt-2 text-foreground">
                 Dois salões. Um conceito.
               </h2>
               <p className="mt-3 max-w-md font-sans text-sm leading-[1.55] text-muted">{brand.promise}</p>

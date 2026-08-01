@@ -28,6 +28,7 @@
   --color-gold-bright: var(--gold-bright);
   --color-brasil: var(--brasil);
   --color-iguatemi: var(--iguatemi);
+  /* next/font sets --font-sans / --font-display on <html>; do not redeclare here */
 }
 
 html {
@@ -37,9 +38,11 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-weight: 400;
   line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
@@ -118,14 +121,34 @@ body {
 }
 
 .font-display {
-  font-family: var(--font-display), Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display), ui-serif, Georgia, 'Times New Roman', serif;
   font-weight: 400;
-  letter-spacing: -0.015em;
-  line-height: 1.1;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  font-synthesis: none;
 }
 
 .font-sans {
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Large display titles — unmistakable Playfair presence */
+.display-hero {
+  font-family: var(--font-display), ui-serif, Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-synthesis: none;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-size: clamp(2.75rem, 8vw, 5.75rem);
+}
+
+.display-section {
+  font-family: var(--font-display), ui-serif, Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-synthesis: none;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
 }
 
 .card-border {

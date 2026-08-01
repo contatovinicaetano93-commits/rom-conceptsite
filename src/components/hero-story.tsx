@@ -97,13 +97,13 @@ export function HeroStory() {
               <p className="section-label mb-4 md:hidden">
                 Guinness World Records · maior salão de beleza do mundo
               </p>
-              <p className="font-display text-lg italic tracking-[-0.01em] text-foreground/90 md:text-xl">
+              <p className="font-display text-xl italic tracking-[-0.01em] text-foreground/90 md:text-2xl">
                 ROM, o poder de transformar.
               </p>
             </div>
 
             <h1
-              className={`hero-story__step font-display mt-4 text-4xl tracking-[-0.02em] md:text-6xl lg:text-[4.25rem] ${
+              className={`hero-story__step display-hero mt-5 ${
                 on(1) ? 'is-on' : ''
               }`}
             >
@@ -135,7 +135,7 @@ export function HeroStory() {
             </div>
 
             <p
-              className={`hero-story__step font-display mt-10 text-xl tracking-[-0.01em] text-foreground md:text-2xl ${
+              className={`hero-story__step font-display mt-10 text-2xl tracking-[-0.015em] text-foreground md:text-3xl ${
                 on(4) ? 'is-on' : ''
               }`}
             >
