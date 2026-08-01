@@ -316,7 +316,7 @@ h3,
    Extra viewport height so each card phase stays readable (~+1s/step). */
 .conceito-story {
   position: relative;
-  height: 390vh;
+  height: 520vh;
 }
 
 .conceito-story .scroll-story-step {
