@@ -103,7 +103,7 @@ export function HeroStory() {
             </div>
 
             <h1
-              className={`hero-story__step font-display mt-4 text-4xl leading-[1.08] font-light tracking-tight md:text-6xl lg:text-[4.25rem] ${
+              className={`hero-story__step font-display mt-4 text-4xl leading-[1.08] font-normal tracking-[-0.02em] md:text-6xl lg:text-[4.25rem] ${
                 on(1) ? 'is-on' : ''
               }`}
             >
