@@ -25,7 +25,7 @@ export function StatsOrbit() {
                   <div className="stats-orbit__face">
                     <div className="stats-orbit__medallion flex shrink-0 items-center justify-center rounded-full p-3">
                       <p
-                        className={`stats-orbit__value font-serif leading-none ${
+                        className={`stats-orbit__value font-display leading-none ${
                           hero ? 'stats-orbit__value--hero' : ''
                         }`}
                       >

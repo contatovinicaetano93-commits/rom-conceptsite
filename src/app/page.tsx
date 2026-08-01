@@ -28,7 +28,7 @@ export default function Home() {
             <span className="text-[0.65rem] font-semibold tracking-[0.28em] text-gold uppercase">
               ROM
             </span>
-            <span className="font-serif text-xl leading-none text-foreground transition-colors group-hover:text-gold-strong md:text-2xl">
+            <span className="font-display text-xl leading-none tracking-[-0.01em] text-foreground transition-colors group-hover:text-gold-strong md:text-2xl">
               Concept
             </span>
           </a>
@@ -81,10 +81,10 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Serviços</p>
-              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+              <h2 className="font-display text-3xl text-foreground md:text-5xl">
                 O que fazemos
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
+              <p className="mt-4 font-sans text-base leading-[1.55] text-muted md:text-lg">
                 Corte, coloração, mechas, tratamentos e bem-estar — com padrão ROM Concept. Valores
                 variam conforme o serviço; a equipe confirma no agendamento.
               </p>
@@ -104,15 +104,15 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">O conceito</p>
-              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+              <h2 className="font-display text-3xl text-foreground md:text-5xl">
                 O Conceito
               </h2>
             </div>
             <div data-reveal className="mb-12">
-              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+              <h2 className="font-display text-3xl text-foreground md:text-5xl">
                 {brand.promise}
               </h2>
-              <p className="mt-6 text-base leading-relaxed text-muted md:text-lg">{brand.manifesto}</p>
+              <p className="mt-6 font-sans text-base leading-[1.55] text-muted md:text-lg">{brand.manifesto}</p>
             </div>
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_srgb,var(--gold)_6%,transparent),transparent_70%)]" />
             <div className="relative z-10 grid items-start gap-4 md:grid-cols-3">
@@ -128,7 +128,7 @@ export default function Home() {
                   className="card-border card-glow rounded-2xl p-6"
                 >
                   <p className="section-label mb-3">{item.label}</p>
-                  <p className="text-base leading-relaxed text-foreground/90 md:text-lg">{item.value}</p>
+                  <p className="font-sans text-base leading-[1.55] text-foreground/90 md:text-lg">{item.value}</p>
                 </article>
               ))}
             </div>
@@ -141,7 +141,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Quem conduz</p>
-              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+              <h2 className="font-display text-3xl text-foreground md:text-5xl">
                 Romeu Felipe
               </h2>
             </div>
@@ -184,7 +184,7 @@ export default function Home() {
                   <p className="section-label mb-3">
                     Co-fundador ROM Concept · Educador Wella · Guinness World Records
                   </p>
-                  <p className="text-base leading-relaxed text-muted md:text-lg">
+                  <p className="font-sans text-base leading-[1.55] text-muted md:text-lg">
                     Iniciou como educador Wella e se tornou referência mundial em coloração e mechas
                     criativas. Co-fundou o ROM Concept em 2019 — hoje o maior salão de beleza do
                     mundo. Atende celebridades como Yasmin Brunet, Mariana Rios, Juliette e Ticiane
@@ -202,7 +202,7 @@ export default function Home() {
                         style={{ '--reveal-delay': 180 + index * 80 } as CSSProperties}
                         className="rounded-xl border border-border bg-card/50 p-4"
                       >
-                        <p className="font-serif text-2xl text-gold-strong">{item.value}</p>
+                        <p className="font-display text-2xl text-gold-strong">{item.value}</p>
                         <p className="mt-1 text-xs text-muted">{item.label}</p>
                       </div>
                     ))}
@@ -222,10 +222,10 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div data-reveal="lift" className="mb-12 max-w-2xl">
               <p className="section-label mb-4">Galeria</p>
-              <h2 className="font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl">
+              <h2 className="font-display text-3xl text-foreground md:text-5xl">
                 <span className="gold-text">ROM Concept</span>
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
+              <p className="mt-4 font-sans text-base leading-[1.55] text-muted md:text-lg">
                 Do editorial à cadeira da cliente — a paleta e o método que Romeu Felipe desenvolveu
                 para cabelo brasileiro.
               </p>
@@ -294,10 +294,10 @@ export default function Home() {
               <p className="text-[0.65rem] font-semibold tracking-[0.28em] text-gold uppercase">
                 ROM Concept
               </p>
-              <h2 className="mt-2 font-serif text-3xl text-foreground md:text-4xl">
+              <h2 className="font-display mt-2 text-3xl text-foreground md:text-4xl">
                 Dois salões. Um conceito.
               </h2>
-              <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">{brand.promise}</p>
+              <p className="mt-3 max-w-md font-sans text-sm leading-[1.55] text-muted">{brand.promise}</p>
               <p className="mt-4 text-xs text-muted">{brand.partners.join(' · ')}</p>
               <div className="mt-4 space-y-1 text-sm text-muted">
                 <p>

@@ -97,13 +97,13 @@ export function HeroStory() {
               <p className="section-label mb-4 md:hidden">
                 Guinness World Records · maior salão de beleza do mundo
               </p>
-              <p className="font-serif text-lg text-foreground/90 italic md:text-xl">
+              <p className="font-display text-lg italic tracking-[-0.01em] text-foreground/90 md:text-xl">
                 ROM, o poder de transformar.
               </p>
             </div>
 
             <h1
-              className={`hero-story__step font-display mt-4 text-4xl leading-[1.08] font-light tracking-tight md:text-6xl lg:text-[4.25rem] ${
+              className={`hero-story__step font-display mt-4 text-4xl tracking-[-0.02em] md:text-6xl lg:text-[4.25rem] ${
                 on(1) ? 'is-on' : ''
               }`}
             >
@@ -111,7 +111,7 @@ export function HeroStory() {
             </h1>
 
             <p
-              className={`hero-story__step mx-auto mt-5 max-w-xl text-pretty text-balance text-base font-medium leading-relaxed text-foreground md:text-xl ${
+              className={`hero-story__step mx-auto mt-5 max-w-xl text-pretty text-balance font-sans text-base font-medium leading-[1.55] text-foreground md:text-xl ${
                 on(2) ? 'is-on' : ''
               }`}
             >
@@ -135,7 +135,7 @@ export function HeroStory() {
             </div>
 
             <p
-              className={`hero-story__step mt-10 font-serif text-xl text-foreground md:text-2xl ${
+              className={`hero-story__step font-display mt-10 text-xl tracking-[-0.01em] text-foreground md:text-2xl ${
                 on(4) ? 'is-on' : ''
               }`}
             >
@@ -171,7 +171,7 @@ export function HeroStory() {
                     >
                       {salon.accent === 'brasil' ? 'Jardins' : 'Iguatemi'}
                     </span>
-                    <span className="mt-1 block font-serif text-lg text-foreground group-hover:text-gold-strong">
+                    <span className="mt-1 block font-display text-lg tracking-[-0.01em] text-foreground group-hover:text-gold-strong">
                       {salon.accent === 'brasil' ? 'Av. Brasil, 126' : 'Faria Lima, 2232'}
                     </span>
                     <span className="mt-1 block text-xs text-muted">

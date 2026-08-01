@@ -15,7 +15,9 @@ export function ServicesMarquee() {
         {services.map((service) => (
           <article key={service.name} className="card-border card-glow services-grid__card">
             <p className="section-label mb-2">{service.category}</p>
-            <h3 className="text-base font-medium text-foreground">{service.name}</h3>
+            <h3 className="font-display text-base tracking-[-0.01em] text-foreground">
+              {service.name}
+            </h3>
           </article>
         ))}
       </div>
@@ -29,7 +31,9 @@ export function ServicesMarquee() {
               aria-hidden={index >= services.length ? true : undefined}
             >
               <p className="section-label mb-2">{service.category}</p>
-              <h3 className="text-base font-medium text-foreground md:text-lg">{service.name}</h3>
+              <h3 className="font-display text-base tracking-[-0.01em] text-foreground md:text-lg">
+                {service.name}
+              </h3>
             </article>
           ))}
         </div>

@@ -1,21 +1,35 @@
 import type { Metadata, Viewport } from 'next'
-import { Cormorant_Garamond, Fraunces, Hanken_Grotesk } from 'next/font/google'
+import { Playfair_Display } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 
-const hanken = Hanken_Grotesk({
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  variable: '--font-body-sans',
+  weight: ['400'],
+  style: ['normal', 'italic'],
+  variable: '--font-display',
 })
 
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-cormorant',
-})
-
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  variable: '--font-display-face',
+const generalSans = localFont({
+  src: [
+    {
+      path: '../fonts/general-sans-400.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/general-sans-500.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/general-sans-600.woff2',
+      weight: '600',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-sans',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -37,9 +51,9 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${hanken.variable} ${cormorant.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${playfair.variable} ${generalSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-background pb-24 md:pb-0">{children}</body>
+      <body className="min-h-full bg-background font-sans pb-24 md:pb-0">{children}</body>
     </html>
   )
 }

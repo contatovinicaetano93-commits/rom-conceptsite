@@ -64,14 +64,14 @@ export function UnidadesStory() {
                 Onde estamos
               </p>
               <h2
-                className={`scroll-story-step font-serif text-3xl leading-tight font-light tracking-tight text-foreground md:text-5xl ${
+                className={`scroll-story-step font-display text-3xl text-foreground md:text-5xl ${
                   on(1) ? 'is-on' : ''
                 }`}
               >
                 Duas unidades em São Paulo
               </h2>
               <p
-                className={`scroll-story-step mt-4 text-base leading-relaxed text-muted md:text-lg ${
+                className={`scroll-story-step mt-4 font-sans text-base leading-[1.55] text-muted md:text-lg ${
                   on(2) ? 'is-on' : ''
                 }`}
               >
