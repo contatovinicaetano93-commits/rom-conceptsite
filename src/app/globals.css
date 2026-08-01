@@ -312,12 +312,29 @@ h3,
   height: 180vh;
 }
 
+/* Conceito — cards reveal, then arrow finishes before unlock */
+.conceito-story {
+  position: relative;
+  height: 240vh;
+}
+
 .text-story__sticky,
-.unidades-story__sticky {
+.unidades-story__sticky,
+.conceito-story__sticky {
   position: sticky;
   top: 0;
   height: 100svh;
   overflow: hidden;
+}
+
+.conceito-story__arrow {
+  margin: 0;
+  padding: 0;
+}
+
+.conceito-story__arrow .scroll-arrow__inner {
+  max-width: none;
+  padding: 0;
 }
 
 .text-story__progress,
@@ -386,18 +403,24 @@ h3,
   .unidades-story {
     height: 150vh;
   }
+
+  .conceito-story {
+    height: 200vh;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-story,
   .text-story,
-  .unidades-story {
+  .unidades-story,
+  .conceito-story {
     height: auto;
   }
 
   .hero-story__sticky,
   .text-story__sticky,
-  .unidades-story__sticky {
+  .unidades-story__sticky,
+  .conceito-story__sticky {
     position: relative;
     height: auto;
     min-height: auto;

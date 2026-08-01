@@ -4,8 +4,8 @@ import { MessageCircle, Play } from 'lucide-react'
 import { HeroStory } from '@/components/hero-story'
 import { MusicPlayer } from '@/components/music-player'
 import { ScrollProgress } from '@/components/scroll-progress'
+import { ConceitoStory } from '@/components/conceito-story'
 import { MomentoMarquee } from '@/components/momento-marquee'
-import { ScrollArrowLine } from '@/components/scroll-arrow-line'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { ServicosStory } from '@/components/servicos-story'
 import { SideGuide } from '@/components/side-guide'
@@ -79,42 +79,7 @@ export default function Home() {
 
         <ServicosStory />
 
-        <section id="conceito" className="relative overflow-hidden bg-surface/40 py-20 md:py-28">
-          <div className="mx-auto max-w-6xl px-5 md:px-8">
-            <div data-reveal="lift" className="mb-12 max-w-2xl">
-              <p className="section-label mb-4">O conceito</p>
-              <h2 className="font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl">
-                O Conceito
-              </h2>
-            </div>
-            <div data-reveal className="mb-12">
-              <h2 className="font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl">
-                {brand.promise}
-              </h2>
-              <p className="copy mt-6 max-w-3xl">{brand.manifesto}</p>
-            </div>
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_srgb,var(--gold)_6%,transparent),transparent_70%)]" />
-            <div className="relative z-10 grid items-start gap-4 md:grid-cols-3">
-              {[
-                { label: 'Visão', value: brand.vision },
-                { label: 'Fundador', value: brand.founder },
-                { label: 'Parceiros', value: brand.partners.join(' · ') },
-              ].map((item, index) => (
-                <article
-                  key={item.label}
-                  data-reveal
-                  style={{ '--reveal-delay': index * 100 } as CSSProperties}
-                  className="card-border card-glow rounded-2xl p-6"
-                >
-                  <p className="section-label mb-3">{item.label}</p>
-                  <p className="copy copy--bright">{item.value}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <ScrollArrowLine />
+        <ConceitoStory />
 
         <section id="romeu" className="relative overflow-hidden bg-surface/30 py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
