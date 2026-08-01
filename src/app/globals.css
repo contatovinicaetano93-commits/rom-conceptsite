@@ -226,6 +226,94 @@ body {
   }
 }
 
+/* Hero sticky scroll story — page stays pinned while phrases reveal */
+.hero-story {
+  position: relative;
+  height: 420vh;
+}
+
+.hero-story__sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.hero-story__step {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(2px);
+  transition:
+    opacity 0.55s var(--ease-out-expo),
+    transform 0.55s var(--ease-out-expo),
+    filter 0.55s var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.hero-story__step.is-on {
+  opacity: 1;
+  transform: translateY(0);
+  filter: none;
+  pointer-events: auto;
+}
+
+.hero-story__progress {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.4rem;
+  left: 1.25rem;
+  z-index: 12;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--border) 80%, transparent);
+}
+
+@media (min-width: 1024px) {
+  .hero-story__progress {
+    right: 5.5rem;
+  }
+}
+
+.hero-story__progress-bar {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 50%, transparent);
+  transition: width 0.35s var(--ease-out-expo);
+}
+
+@media (max-width: 767px) {
+  .hero-story {
+    height: 360vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-story {
+    height: auto;
+  }
+
+  .hero-story__sticky {
+    position: relative;
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .hero-story__step {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    pointer-events: auto;
+    transition: none;
+  }
+
+  .hero-story__progress {
+    display: none;
+  }
+}
+
 /* Stats medallions — continuous 3D orbit */
 .stats-orbit {
   --orbit-duration: 28s;
