@@ -4,13 +4,17 @@ import type { CSSProperties } from 'react'
 import { CountUp } from '@/components/count-up'
 import { stats } from '@/lib/content'
 
+function isStaticHeroValue(value: string) {
+  return value.length <= 2
+}
+
 export function StatsOrbit() {
   return (
     <div className="stats-orbit" data-reveal aria-label="Números ROM Concept">
       <div className="stats-orbit__stage">
         <div className="stats-orbit__ring">
           {stats.map((stat, index) => {
-            const isHeroValue = stat.value.length <= 3
+            const hero = isStaticHeroValue(stat.value)
             return (
               <div
                 key={stat.label}
@@ -19,13 +23,13 @@ export function StatsOrbit() {
               >
                 <div className="stats-orbit__billboard">
                   <div className="stats-orbit__face">
-                    <div className="medallion-ring stats-orbit__medallion flex shrink-0 items-center justify-center rounded-full p-3">
+                    <div className="stats-orbit__medallion flex shrink-0 items-center justify-center rounded-full p-3">
                       <p
-                        className={`stats-orbit__value font-serif leading-[1.1] ${
-                          isHeroValue ? 'stats-orbit__value--hero' : ''
+                        className={`stats-orbit__value font-serif leading-none ${
+                          hero ? 'stats-orbit__value--hero' : ''
                         }`}
                       >
-                        <CountUp value={stat.value} />
+                        {hero ? stat.value : <CountUp value={stat.value} />}
                       </p>
                     </div>
                     <p className="stats-orbit__label">{stat.label}</p>
