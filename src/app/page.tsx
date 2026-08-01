@@ -7,7 +7,6 @@ import {
   MessageCircle,
   Play,
 } from 'lucide-react'
-import { CountUp } from '@/components/count-up'
 import { HeroCarousel } from '@/components/hero-carousel'
 import { MusicPlayer } from '@/components/music-player'
 import { ScrollProgress } from '@/components/scroll-progress'
@@ -17,12 +16,12 @@ import { ScrollReveal } from '@/components/scroll-reveal'
 import { ServicesMarquee } from '@/components/services-marquee'
 import { SideGuide } from '@/components/side-guide'
 import { SiteIntro } from '@/components/site-intro'
+import { StatsOrbit } from '@/components/stats-orbit'
 import { UnidadesStage } from '@/components/unidades-stage'
 import {
   brand,
   salonWhatsappUrl,
   salons,
-  stats,
 } from '@/lib/content'
 
 const accentStyles = {
@@ -190,22 +189,8 @@ export default function Home() {
         </div>
 
         <section className="border-y border-border bg-surface/50 py-14 md:py-16">
-          <div className="mx-auto grid max-w-5xl gap-x-6 gap-y-10 px-5 sm:grid-cols-2 md:grid-cols-4 md:px-8">
-            {stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                data-reveal
-                style={{ '--reveal-delay': index * 90 } as CSSProperties}
-                className="flex flex-col items-center text-center"
-              >
-                <div className="medallion-ring flex size-28 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-card/60 p-3 md:size-32">
-                  <p className="font-serif text-lg leading-[1.15] text-gold-strong md:text-xl">
-                    <CountUp value={stat.value} />
-                  </p>
-                </div>
-                <p className="mt-4 max-w-[11rem] text-xs leading-relaxed text-muted">{stat.label}</p>
-              </div>
-            ))}
+          <div className="mx-auto max-w-5xl px-5 md:px-8">
+            <StatsOrbit />
           </div>
         </section>
 

@@ -226,6 +226,117 @@ body {
   }
 }
 
+/* Stats medallions — continuous 3D orbit */
+.stats-orbit {
+  --orbit-duration: 28s;
+  --orbit-radius: 9.25rem;
+}
+
+.stats-orbit__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: clamp(18rem, 42vw, 22rem);
+  perspective: 1100px;
+  perspective-origin: 50% 42%;
+}
+
+.stats-orbit__ring {
+  position: relative;
+  width: 7.5rem;
+  height: 7.5rem;
+  transform-style: preserve-3d;
+  animation: stats-orbit-spin var(--orbit-duration) linear infinite;
+}
+
+.stats-orbit:hover .stats-orbit__ring,
+.stats-orbit:hover .stats-orbit__face {
+  animation-play-state: paused;
+}
+
+.stats-orbit__item {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  transform: rotateY(calc(var(--orbit-index) * 90deg)) translateZ(var(--orbit-radius));
+}
+
+.stats-orbit__face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  text-align: center;
+  transform-style: preserve-3d;
+  animation: stats-orbit-spin var(--orbit-duration) linear infinite reverse;
+}
+
+.stats-orbit__medallion {
+  width: 7.5rem;
+  height: 7.5rem;
+  box-shadow: 0 14px 30px color-mix(in srgb, #000 40%, transparent);
+}
+
+.stats-orbit__label {
+  max-width: 10.5rem;
+  font-size: 0.7rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+@keyframes stats-orbit-spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .stats-orbit {
+    --orbit-radius: 11.5rem;
+  }
+
+  .stats-orbit__medallion {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .stats-orbit__ring {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .stats-orbit {
+    --orbit-radius: 7.25rem;
+    --orbit-duration: 32s;
+  }
+
+  .stats-orbit__stage {
+    height: 17rem;
+  }
+
+  .stats-orbit__medallion {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  .stats-orbit__ring {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  .stats-orbit__label {
+    font-size: 0.65rem;
+    max-width: 8.5rem;
+  }
+}
+
 /* Site intro — layered reveal (~5s, no skip) */
 .site-intro {
   position: fixed;
@@ -782,8 +893,30 @@ body {
   }
 
   .services-marquee__track,
-  .momento-marquee__track {
+  .momento-marquee__track,
+  .stats-orbit__ring,
+  .stats-orbit__face {
     animation: none !important;
+    transform: none !important;
+  }
+
+  .stats-orbit__stage {
+    height: auto;
+    perspective: none;
+  }
+
+  .stats-orbit__ring {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.75rem 2rem;
+    width: 100%;
+    height: auto;
+  }
+
+  .stats-orbit__item {
+    position: relative;
+    inset: auto;
     transform: none !important;
   }
 
