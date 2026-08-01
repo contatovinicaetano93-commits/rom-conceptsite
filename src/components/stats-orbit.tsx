@@ -9,26 +9,31 @@ export function StatsOrbit() {
     <div className="stats-orbit" data-reveal aria-label="Números ROM Concept">
       <div className="stats-orbit__stage">
         <div className="stats-orbit__ring">
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className="stats-orbit__item"
-              style={{ '--orbit-index': index } as CSSProperties}
-            >
-              {/* Cancels ring spin so the face stays camera-facing */}
-              <div className="stats-orbit__billboard">
-                {/* Cancels each item's orbit angle so every medallion reads upright */}
-                <div className="stats-orbit__face">
-                  <div className="medallion-ring stats-orbit__medallion flex shrink-0 items-center justify-center rounded-full border border-gold/30 bg-card/60 p-3">
-                    <p className="font-serif text-lg leading-[1.15] text-gold-strong md:text-xl">
-                      <CountUp value={stat.value} />
-                    </p>
+          {stats.map((stat, index) => {
+            const isHeroValue = stat.value.length <= 3
+            return (
+              <div
+                key={stat.label}
+                className="stats-orbit__item"
+                style={{ '--orbit-index': index } as CSSProperties}
+              >
+                <div className="stats-orbit__billboard">
+                  <div className="stats-orbit__face">
+                    <div className="medallion-ring stats-orbit__medallion flex shrink-0 items-center justify-center rounded-full p-3">
+                      <p
+                        className={`stats-orbit__value font-serif leading-[1.1] ${
+                          isHeroValue ? 'stats-orbit__value--hero' : ''
+                        }`}
+                      >
+                        <CountUp value={stat.value} />
+                      </p>
+                    </div>
+                    <p className="stats-orbit__label">{stat.label}</p>
                   </div>
-                  <p className="stats-orbit__label">{stat.label}</p>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </div>

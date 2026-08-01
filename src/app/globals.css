@@ -285,14 +285,42 @@ body {
 .stats-orbit__medallion {
   width: 7.5rem;
   height: 7.5rem;
-  box-shadow: 0 14px 30px color-mix(in srgb, #000 40%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold-bright) 70%, transparent);
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      color-mix(in srgb, var(--gold) 28%, transparent),
+      color-mix(in srgb, var(--card-elevated) 92%, transparent) 62%
+    );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent),
+    0 0 28px color-mix(in srgb, var(--gold) 38%, transparent),
+    0 0 52px color-mix(in srgb, var(--gold) 18%, transparent),
+    0 16px 32px color-mix(in srgb, #000 45%, transparent),
+    inset 0 0 24px color-mix(in srgb, var(--gold) 14%, transparent);
+}
+
+.stats-orbit__value {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--gold-bright);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+.stats-orbit__value--hero {
+  font-size: 2.35rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--gold-bright);
 }
 
 .stats-orbit__label {
-  max-width: 10.5rem;
-  font-size: 0.7rem;
+  max-width: 11rem;
+  font-size: 0.74rem;
+  font-weight: 700;
   line-height: 1.45;
-  color: var(--muted);
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--foreground) 92%, var(--muted));
 }
 
 @keyframes stats-orbit-spin {
@@ -310,13 +338,25 @@ body {
   }
 
   .stats-orbit__medallion {
-    width: 8rem;
-    height: 8rem;
+    width: 8.25rem;
+    height: 8.25rem;
   }
 
   .stats-orbit__ring {
-    width: 8rem;
-    height: 8rem;
+    width: 8.25rem;
+    height: 8.25rem;
+  }
+
+  .stats-orbit__value {
+    font-size: 1.15rem;
+  }
+
+  .stats-orbit__value--hero {
+    font-size: 2.65rem;
+  }
+
+  .stats-orbit__label {
+    font-size: 0.78rem;
   }
 }
 
@@ -341,8 +381,12 @@ body {
   }
 
   .stats-orbit__label {
-    font-size: 0.65rem;
-    max-width: 8.5rem;
+    font-size: 0.7rem;
+    max-width: 9rem;
+  }
+
+  .stats-orbit__value--hero {
+    font-size: 2.1rem;
   }
 }
 
