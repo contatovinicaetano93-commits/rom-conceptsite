@@ -305,11 +305,14 @@ h3,
 }
 
 /* Unidades sticky intro — text only; cards stay in normal flow below */
+/* Sticky text reveal — Unidades, Serviços (copy only; cards stay below) */
+.text-story,
 .unidades-story {
   position: relative;
   height: 180vh;
 }
 
+.text-story__sticky,
 .unidades-story__sticky {
   position: sticky;
   top: 0;
@@ -317,6 +320,7 @@ h3,
   overflow: hidden;
 }
 
+.text-story__progress,
 .unidades-story__progress {
   position: absolute;
   right: 1.25rem;
@@ -330,11 +334,13 @@ h3,
 }
 
 @media (min-width: 1024px) {
+  .text-story__progress,
   .unidades-story__progress {
     right: 5.5rem;
   }
 }
 
+.text-story__progress-bar,
 .unidades-story__progress-bar {
   height: 100%;
   width: 0;
@@ -376,6 +382,7 @@ h3,
     height: 360vh;
   }
 
+  .text-story,
   .unidades-story {
     height: 150vh;
   }
@@ -383,11 +390,13 @@ h3,
 
 @media (prefers-reduced-motion: reduce) {
   .hero-story,
+  .text-story,
   .unidades-story {
     height: auto;
   }
 
   .hero-story__sticky,
+  .text-story__sticky,
   .unidades-story__sticky {
     position: relative;
     height: auto;
@@ -405,6 +414,7 @@ h3,
   }
 
   .hero-story__progress,
+  .text-story__progress,
   .unidades-story__progress {
     display: none;
   }

@@ -7,7 +7,7 @@ import { ScrollProgress } from '@/components/scroll-progress'
 import { MomentoMarquee } from '@/components/momento-marquee'
 import { ScrollArrowLine } from '@/components/scroll-arrow-line'
 import { ScrollReveal } from '@/components/scroll-reveal'
-import { ServicesMarquee } from '@/components/services-marquee'
+import { ServicosStory } from '@/components/servicos-story'
 import { SideGuide } from '@/components/side-guide'
 import { SiteIntro } from '@/components/site-intro'
 import { StatsOrbit } from '@/components/stats-orbit'
@@ -77,28 +77,7 @@ export default function Home() {
 
         <UnidadesStory />
 
-        <section id="servicos" className="py-20 md:py-28">
-          <div className="mx-auto max-w-6xl px-5 md:px-8">
-            <div data-reveal="lift" className="mb-12 max-w-2xl">
-              <p className="section-label mb-4">Serviços</p>
-              <h2 className="font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl">
-                O que fazemos
-              </h2>
-              <p className="copy mt-5">
-                Corte, coloração, mechas, tratamentos e bem-estar — com padrão ROM Concept. Valores
-                variam conforme o serviço; a equipe confirma no agendamento.
-              </p>
-            </div>
-          </div>
-          <div className="mt-2">
-            <ServicesMarquee />
-          </div>
-          <div className="mx-auto mt-8 max-w-6xl px-5 md:px-8">
-            <p data-reveal="soft" className="copy copy--sm">
-              Serviços exclusivos podem variar por unidade — consulte a equipe ao agendar.
-            </p>
-          </div>
-        </section>
+        <ServicosStory />
 
         <section id="conceito" className="relative overflow-hidden bg-surface/40 py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
