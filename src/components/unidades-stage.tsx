@@ -62,7 +62,9 @@ function SalonCard({ salon }: { salon: SalonUnit }) {
             >
               {salon.shortName}
             </span>
-            <h3 className="mt-4 font-serif text-2xl text-foreground md:text-3xl">{salon.name}</h3>
+            <h3 className="font-display mt-4 text-2xl tracking-[-0.01em] text-foreground md:text-3xl">
+              {salon.name}
+            </h3>
           </div>
           <span className={`mt-2 size-2.5 shrink-0 rounded-full ${styles.dot}`} aria-hidden />
         </div>
@@ -96,7 +98,7 @@ function SalonCard({ salon }: { salon: SalonUnit }) {
           </div>
         </div>
 
-        <p className="mb-6 text-base leading-relaxed text-muted">{salon.description}</p>
+        <p className="mb-6 font-sans text-base leading-[1.55] text-muted">{salon.description}</p>
 
         <ul className="mb-8 space-y-2">
           {salon.highlights.map((item) => (
