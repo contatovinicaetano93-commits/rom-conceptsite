@@ -71,9 +71,7 @@ export function UnidadesStory() {
                 Duas unidades em São Paulo
               </h2>
               <p
-                className={`scroll-story-step mt-4 text-base leading-relaxed text-muted md:text-lg ${
-                  on(2) ? 'is-on' : ''
-                }`}
+                className={`copy scroll-story-step mt-5 ${on(2) ? 'is-on' : ''}`}
               >
                 Escolha a unidade mais conveniente e agende #SeuMomentoROM pelo WhatsApp. A equipe
                 confirma horário e serviço com você.

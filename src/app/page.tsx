@@ -84,7 +84,7 @@ export default function Home() {
               <h2 className="font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl">
                 O que fazemos
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
+              <p className="copy mt-5">
                 Corte, coloração, mechas, tratamentos e bem-estar — com padrão ROM Concept. Valores
                 variam conforme o serviço; a equipe confirma no agendamento.
               </p>
@@ -94,7 +94,7 @@ export default function Home() {
             <ServicesMarquee />
           </div>
           <div className="mx-auto mt-8 max-w-6xl px-5 md:px-8">
-            <p data-reveal="soft" className="text-sm text-muted">
+            <p data-reveal="soft" className="copy copy--sm">
               Serviços exclusivos podem variar por unidade — consulte a equipe ao agendar.
             </p>
           </div>
@@ -112,7 +112,7 @@ export default function Home() {
               <h2 className="font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl">
                 {brand.promise}
               </h2>
-              <p className="mt-6 text-base leading-relaxed text-muted md:text-lg">{brand.manifesto}</p>
+              <p className="copy mt-6 max-w-3xl">{brand.manifesto}</p>
             </div>
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_srgb,var(--gold)_6%,transparent),transparent_70%)]" />
             <div className="relative z-10 grid items-start gap-4 md:grid-cols-3">
@@ -128,7 +128,7 @@ export default function Home() {
                   className="card-border card-glow rounded-2xl p-6"
                 >
                   <p className="section-label mb-3">{item.label}</p>
-                  <p className="text-base leading-relaxed text-foreground/90 md:text-lg">{item.value}</p>
+                  <p className="copy copy--bright">{item.value}</p>
                 </article>
               ))}
             </div>
@@ -184,7 +184,7 @@ export default function Home() {
                   <p className="section-label mb-3">
                     Co-fundador ROM Concept · Educador Wella · Guinness World Records
                   </p>
-                  <p className="text-base leading-relaxed text-muted md:text-lg">
+                  <p className="copy">
                     Iniciou como educador Wella e se tornou referência mundial em coloração e mechas
                     criativas. Co-fundou o ROM Concept em 2019 — hoje o maior salão de beleza do
                     mundo. Atende celebridades como Yasmin Brunet, Mariana Rios, Juliette e Ticiane
@@ -225,7 +225,7 @@ export default function Home() {
               <h2 className="font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl">
                 <span className="gold-text">ROM Concept</span>
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
+              <p className="copy mt-5">
                 Do editorial à cadeira da cliente — a paleta e o método que Romeu Felipe desenvolveu
                 para cabelo brasileiro.
               </p>
@@ -297,7 +297,7 @@ export default function Home() {
               <h2 className="mt-2 font-serif text-3xl text-foreground md:text-4xl">
                 Dois salões. Um conceito.
               </h2>
-              <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">{brand.promise}</p>
+              <p className="copy mt-4 max-w-md">{brand.promise}</p>
               <p className="mt-4 text-xs text-muted">{brand.partners.join(' · ')}</p>
               <div className="mt-4 space-y-1 text-sm text-muted">
                 <p>

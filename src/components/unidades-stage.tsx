@@ -96,12 +96,12 @@ function SalonCard({ salon }: { salon: SalonUnit }) {
           </div>
         </div>
 
-        <p className="mb-6 text-base leading-relaxed text-muted">{salon.description}</p>
+        <p className="copy mb-6">{salon.description}</p>
 
-        <ul className="mb-8 space-y-2">
+        <ul className="mb-8 space-y-3">
           {salon.highlights.map((item) => (
-            <li key={item} className="flex items-start gap-2 text-sm text-foreground/90">
-              <span className={`mt-1.5 size-1.5 shrink-0 rounded-full ${styles.dot}`} />
+            <li key={item} className="copy copy--sm copy--bright flex items-start gap-2">
+              <span className={`mt-2 size-1.5 shrink-0 rounded-full ${styles.dot}`} />
               {item}
             </li>
           ))}

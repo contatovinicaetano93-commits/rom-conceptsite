@@ -111,7 +111,7 @@ export function HeroStory() {
             </h1>
 
             <p
-              className={`hero-story__step mx-auto mt-5 max-w-xl text-pretty text-balance text-base font-medium leading-relaxed text-foreground md:text-xl ${
+              className={`copy copy--bright hero-story__step mx-auto mt-6 max-w-xl text-balance ${
                 on(2) ? 'is-on' : ''
               }`}
             >
