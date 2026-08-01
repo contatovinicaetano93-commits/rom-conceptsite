@@ -250,7 +250,7 @@ body {
 }
 
 .stats-orbit:hover .stats-orbit__ring,
-.stats-orbit:hover .stats-orbit__face {
+.stats-orbit:hover .stats-orbit__billboard {
   animation-play-state: paused;
 }
 
@@ -263,6 +263,15 @@ body {
   transform: rotateY(calc(var(--orbit-index) * 90deg)) translateZ(var(--orbit-radius));
 }
 
+/* Cancels ring rotation */
+.stats-orbit__billboard {
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  animation: stats-orbit-spin var(--orbit-duration) linear infinite reverse;
+}
+
+/* Cancels each item's base orbit angle — keeps every face readable */
 .stats-orbit__face {
   display: flex;
   flex-direction: column;
@@ -270,7 +279,7 @@ body {
   gap: 0.85rem;
   text-align: center;
   transform-style: preserve-3d;
-  animation: stats-orbit-spin var(--orbit-duration) linear infinite reverse;
+  transform: rotateY(calc(var(--orbit-index) * -90deg));
 }
 
 .stats-orbit__medallion {
@@ -895,8 +904,12 @@ body {
   .services-marquee__track,
   .momento-marquee__track,
   .stats-orbit__ring,
-  .stats-orbit__face {
+  .stats-orbit__billboard {
     animation: none !important;
+    transform: none !important;
+  }
+
+  .stats-orbit__face {
     transform: none !important;
   }
 
