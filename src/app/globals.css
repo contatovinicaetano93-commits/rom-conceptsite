@@ -312,6 +312,16 @@ h3,
   height: 180vh;
 }
 
+/* Conceito intro — label → headline → promise → manifesto (one scroll each) */
+.conceito-intro {
+  position: relative;
+  height: 260vh;
+}
+
+.conceito-intro .scroll-story-step {
+  transition-duration: 0.85s;
+}
+
 /* Conceito — cards reveal, then arrow finishes before unlock.
    Extra viewport height so each card phase stays readable (~+1s/step). */
 .conceito-story {
@@ -325,6 +335,7 @@ h3,
 
 .text-story__sticky,
 .unidades-story__sticky,
+.conceito-intro__sticky,
 .conceito-story__sticky {
   position: sticky;
   top: 0;
@@ -409,6 +420,10 @@ h3,
     height: 150vh;
   }
 
+  .conceito-intro {
+    height: 220vh;
+  }
+
   .conceito-story {
     height: 440vh;
   }
@@ -418,6 +433,7 @@ h3,
   .hero-story,
   .text-story,
   .unidades-story,
+  .conceito-intro,
   .conceito-story {
     height: auto;
   }
@@ -425,6 +441,7 @@ h3,
   .hero-story__sticky,
   .text-story__sticky,
   .unidades-story__sticky,
+  .conceito-intro__sticky,
   .conceito-story__sticky {
     position: relative;
     height: auto;

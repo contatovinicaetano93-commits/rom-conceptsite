@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { brand } from '@/lib/content'
 
+const INTRO_STEPS = 4
 const CARD_STEPS = 3
-/** Share of the sticky track reserved for drawing the arrow after cards are on */
+/** Share of the cards sticky track reserved for drawing the arrow */
 const ARROW_SHARE = 0.3
 
 const cards = [
@@ -13,30 +14,80 @@ const cards = [
   { label: 'Parceiros', value: brand.partners.join(' · ') },
 ] as const
 
-function cardStepFromProgress(contentProgress: number) {
-  if (contentProgress <= 0) return 0
-  if (contentProgress >= 1) return CARD_STEPS - 1
-  return Math.min(CARD_STEPS - 1, Math.floor(contentProgress * CARD_STEPS))
+function stepFromProgress(progress: number, stepCount: number) {
+  if (progress <= 0) return 0
+  if (progress >= 1) return stepCount - 1
+  return Math.min(stepCount - 1, Math.floor(progress * stepCount))
 }
 
-export function ConceitoStory() {
+function useStickyStep(stepCount: number) {
   const trackRef = useRef<HTMLDivElement>(null)
-  const pathRef = useRef<SVGPathElement>(null)
-  const headRef = useRef<SVGPathElement>(null)
   const [step, setStep] = useState(0)
-  const [arrowProgress, setArrowProgress] = useState(0)
   const [reduced, setReduced] = useState(false)
 
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     setReduced(prefersReduced)
     if (prefersReduced) {
-      setStep(CARD_STEPS - 1)
-      setArrowProgress(1)
+      setStep(stepCount - 1)
       return
     }
 
     const track = trackRef.current
+    if (!track) return
+
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const rect = track.getBoundingClientRect()
+      const total = Math.max(1, track.offsetHeight - window.innerHeight)
+      const scrolled = Math.min(total, Math.max(0, -rect.top))
+      setStep(stepFromProgress(scrolled / total, stepCount))
+    }
+
+    const onScroll = () => {
+      if (frame) return
+      frame = window.requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [stepCount])
+
+  return {
+    trackRef,
+    step,
+    reduced,
+    on: (i: number) => reduced || step >= i,
+  }
+}
+
+export function ConceitoStory() {
+  const intro = useStickyStep(INTRO_STEPS)
+
+  const cardsTrackRef = useRef<HTMLDivElement>(null)
+  const pathRef = useRef<SVGPathElement>(null)
+  const headRef = useRef<SVGPathElement>(null)
+  const [cardStep, setCardStep] = useState(0)
+  const [arrowProgress, setArrowProgress] = useState(0)
+  const [cardsReduced, setCardsReduced] = useState(false)
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    setCardsReduced(prefersReduced)
+    if (prefersReduced) {
+      setCardStep(CARD_STEPS - 1)
+      setArrowProgress(1)
+      return
+    }
+
+    const track = cardsTrackRef.current
     const path = pathRef.current
     const head = headRef.current
     if (!track || !path || !head) return
@@ -59,7 +110,7 @@ export function ConceitoStory() {
       const nextArrow =
         progress <= contentEnd ? 0 : Math.min(1, (progress - contentEnd) / ARROW_SHARE)
 
-      setStep(cardStepFromProgress(contentProgress))
+      setCardStep(stepFromProgress(contentProgress, CARD_STEPS))
       setArrowProgress(nextArrow)
 
       path.style.strokeDashoffset = `${length * (1 - nextArrow)}`
@@ -83,40 +134,65 @@ export function ConceitoStory() {
   }, [])
 
   useEffect(() => {
-    if (!reduced) return
+    if (!cardsReduced) return
     const path = pathRef.current
     const head = headRef.current
     if (!path || !head) return
     path.style.strokeDasharray = 'none'
     path.style.strokeDashoffset = '0'
     head.style.opacity = '1'
-  }, [reduced])
+  }, [cardsReduced])
 
-  const on = (index: number) => reduced || step >= index
-  const overallProgress = reduced
+  const cardOn = (index: number) => cardsReduced || cardStep >= index
+  const cardsProgress = cardsReduced
     ? 1
-    : ((step + 1) / CARD_STEPS) * (1 - ARROW_SHARE) + arrowProgress * ARROW_SHARE
+    : ((cardStep + 1) / CARD_STEPS) * (1 - ARROW_SHARE) + arrowProgress * ARROW_SHARE
 
   return (
     <section id="conceito" className="bg-surface/40">
-      {/* Intro copy — normal flow, above the pinned cards/arrow */}
-      <div className="mx-auto max-w-6xl px-5 pt-20 md:px-8 md:pt-28">
-        <div data-reveal="lift" className="mb-10 max-w-2xl md:mb-12">
-          <p className="section-label mb-4">O conceito</p>
-          <h2 className="font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl">
-            O Conceito
-          </h2>
-        </div>
-        <div data-reveal className="mb-4 max-w-3xl md:mb-6">
-          <h3 className="font-serif text-2xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-4xl">
-            {brand.promise}
-          </h3>
-          <p className="copy mt-5 max-w-3xl">{brand.manifesto}</p>
+      {/* Sticky intro — label → headline → promise → manifesto (separate scrolls) */}
+      <div ref={intro.trackRef} className="conceito-intro">
+        <div className="conceito-intro__sticky">
+          <div className="mx-auto flex h-full max-w-6xl items-center px-5 py-20 md:px-8 md:py-28">
+            <div className="max-w-3xl">
+              <p
+                className={`scroll-story-step section-label mb-4 ${intro.on(0) ? 'is-on' : ''}`}
+              >
+                O conceito
+              </p>
+              <h2
+                className={`scroll-story-step font-serif text-3xl leading-tight font-normal tracking-[-0.02em] text-foreground md:text-5xl ${
+                  intro.on(1) ? 'is-on' : ''
+                }`}
+              >
+                O Conceito
+              </h2>
+              <h3
+                className={`scroll-story-step mt-6 font-serif text-2xl leading-tight font-normal tracking-[-0.02em] text-foreground md:mt-8 md:text-4xl ${
+                  intro.on(2) ? 'is-on' : ''
+                }`}
+              >
+                {brand.promise}
+              </h3>
+              <p className={`copy scroll-story-step mt-5 max-w-3xl ${intro.on(3) ? 'is-on' : ''}`}>
+                {brand.manifesto}
+              </p>
+            </div>
+          </div>
+
+          <div className="text-story__progress" aria-hidden>
+            <div
+              className="text-story__progress-bar"
+              style={{
+                width: `${intro.reduced ? 100 : ((intro.step + 1) / INTRO_STEPS) * 100}%`,
+              }}
+            />
+          </div>
         </div>
       </div>
 
       {/* Sticky: cards appear, then arrow must finish before the page continues */}
-      <div ref={trackRef} className="conceito-story">
+      <div ref={cardsTrackRef} className="conceito-story">
         <div className="conceito-story__sticky">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_srgb,var(--gold)_6%,transparent),transparent_70%)]" />
 
@@ -126,7 +202,7 @@ export function ConceitoStory() {
                 <article
                   key={item.label}
                   className={`scroll-story-step card-border card-glow rounded-2xl p-5 md:p-6 ${
-                    on(index) ? 'is-on' : ''
+                    cardOn(index) ? 'is-on' : ''
                   }`}
                 >
                   <p className="section-label mb-3">{item.label}</p>
@@ -166,7 +242,7 @@ export function ConceitoStory() {
           <div className="text-story__progress" aria-hidden>
             <div
               className="text-story__progress-bar"
-              style={{ width: `${Math.min(100, overallProgress * 100)}%` }}
+              style={{ width: `${Math.min(100, cardsProgress * 100)}%` }}
             />
           </div>
         </div>
