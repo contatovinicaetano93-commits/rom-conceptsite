@@ -12,6 +12,9 @@ export function StatsOrbit() {
   return (
     <div className="stats-orbit" data-reveal aria-label="Números ROM Concept">
       <div className="stats-orbit__stage">
+        <p className="stats-orbit__center" aria-hidden>
+          #SeuMomentoROM
+        </p>
         <div className="stats-orbit__ring">
           {stats.map((stat, index) => {
             const hero = isStaticHeroValue(stat.value)

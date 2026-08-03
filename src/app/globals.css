@@ -481,8 +481,29 @@ h3,
   perspective-origin: 50% 45%;
 }
 
+.stats-orbit__center {
+  position: relative;
+  z-index: 4;
+  grid-area: 1 / 1;
+  margin: 0;
+  max-width: 8.5rem;
+  text-align: center;
+  font-family: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
+  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--gold-bright);
+  text-shadow:
+    0 0 18px color-mix(in srgb, var(--gold) 45%, transparent),
+    0 0 40px color-mix(in srgb, var(--gold) 22%, transparent);
+  pointer-events: none;
+}
+
 .stats-orbit__ring {
   position: relative;
+  z-index: 2;
+  grid-area: 1 / 1;
   width: 7.5rem;
   height: 7.5rem;
   transform-style: preserve-3d;
