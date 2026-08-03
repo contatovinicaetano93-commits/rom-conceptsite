@@ -6,6 +6,7 @@ import { MusicPlayer } from '@/components/music-player'
 import { ScrollProgress } from '@/components/scroll-progress'
 import { ConceitoStory } from '@/components/conceito-story'
 import { MomentoMarquee } from '@/components/momento-marquee'
+import { RomTechStory } from '@/components/rom-tech-story'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { ServicosStory } from '@/components/servicos-story'
 import { SideGuide } from '@/components/side-guide'
@@ -78,6 +79,8 @@ export default function Home() {
         <UnidadesStory />
 
         <ServicosStory />
+
+        <RomTechStory />
 
         <ConceitoStory />
 

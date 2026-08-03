@@ -2,12 +2,20 @@
 
 import { useEffect, useState } from 'react'
 
-type SectionId = 'inicio' | 'unidades' | 'servicos' | 'conceito' | 'romeu' | 'galeria'
+type SectionId =
+  | 'inicio'
+  | 'unidades'
+  | 'servicos'
+  | 'tecnologia'
+  | 'conceito'
+  | 'romeu'
+  | 'galeria'
 
 const SECTIONS: { id: SectionId; label: string }[] = [
   { id: 'inicio', label: 'Início' },
   { id: 'unidades', label: 'Unidades' },
   { id: 'servicos', label: 'Serviços' },
+  { id: 'tecnologia', label: 'Tecnologia' },
   { id: 'conceito', label: 'Conceito' },
   { id: 'romeu', label: 'Romeu' },
   { id: 'galeria', label: 'Galeria' },
