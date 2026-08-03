@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
   --background: #0a0908;
@@ -18,6 +22,56 @@
   --font-sans: var(--font-sans-face), generalSans, ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
   --font-serif: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
+  /* shadcn / bklit chart tokens — aligned to ROM dark theme */
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: var(--gold);
+  --primary-foreground: #0a0908;
+  --secondary: var(--card-elevated);
+  --secondary-foreground: var(--foreground);
+  --muted-foreground: color-mix(in srgb, var(--muted) 85%, var(--foreground));
+  --accent: var(--card-elevated);
+  --accent-foreground: var(--foreground);
+  --destructive: oklch(0.65 0.2 25);
+  --input: var(--border);
+  --ring: var(--gold);
+  --radius: 0.625rem;
+  --chart-1: var(--gold-bright);
+  --chart-2: var(--gold);
+  --chart-3: var(--brasil);
+  --chart-4: var(--iguatemi);
+  --chart-5: var(--gold-strong);
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: #0a0908;
+  --sidebar-accent: var(--card);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--gold);
+  --chart-background: var(--background);
+  --chart-foreground: var(--foreground);
+  --chart-foreground-muted: var(--muted);
+  --chart-line-primary: var(--chart-1);
+  --chart-line-secondary: var(--chart-2);
+  --chart-crosshair: color-mix(in srgb, var(--gold) 55%, transparent);
+  --chart-grid: color-mix(in srgb, var(--border) 80%, transparent);
+  --chart-brush-border: var(--chart-grid);
+  --chart-tooltip-background: color-mix(in srgb, var(--card) 92%, transparent);
+  --chart-tooltip-foreground: var(--foreground);
+  --chart-tooltip-muted: var(--muted);
+  --chart-marker-background: var(--card-elevated);
+  --chart-marker-border: color-mix(in srgb, var(--gold) 45%, var(--border));
+  --chart-marker-foreground: var(--foreground);
+  --chart-label: var(--muted);
+  --chart-scale-01: color-mix(in srgb, var(--gold) 8%, var(--background));
+  --chart-scale-02: color-mix(in srgb, var(--gold) 14%, var(--background));
+  --chart-scale-03: color-mix(in srgb, var(--gold) 22%, var(--background));
+  --chart-scale-04: color-mix(in srgb, var(--gold) 32%, var(--background));
+  --chart-scale-05: color-mix(in srgb, var(--gold) 42%, var(--background));
+  --chart-scale-pattern-color: var(--background);
+
 }
 
 @theme inline {
@@ -36,6 +90,59 @@
   --font-display: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
   /* Map legacy serif utility to the single display family (2-family system) */
   --font-serif: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
+  --font-heading: var(--font-display-face), "Playfair Display", ui-serif, Georgia, serif;
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-chart-background: var(--chart-background);
+  --color-chart-foreground: var(--chart-foreground);
+  --color-chart-foreground-muted: var(--chart-foreground-muted);
+  --color-chart-crosshair: var(--chart-crosshair);
+  --color-chart-grid: var(--chart-grid);
+  --color-chart-tooltip-background: var(--chart-tooltip-background);
+  --color-chart-tooltip-foreground: var(--chart-tooltip-foreground);
+  --color-chart-tooltip-muted: var(--chart-tooltip-muted);
+  --color-chart-marker-background: var(--chart-marker-background);
+  --color-chart-marker-border: var(--chart-marker-border);
+  --color-chart-marker-foreground: var(--chart-marker-foreground);
+  --color-chart-label: var(--chart-label);
+  --color-chart-scale-01: var(--chart-scale-01);
+  --color-chart-scale-02: var(--chart-scale-02);
+  --color-chart-scale-03: var(--chart-scale-03);
+  --color-chart-scale-04: var(--chart-scale-04);
+  --color-chart-scale-05: var(--chart-scale-05);
+  --color-chart-scale-pattern-color: var(--chart-scale-pattern-color);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
 }
 
 html {
@@ -1278,5 +1385,18 @@ h3,
     filter: none;
     opacity: 1;
     box-shadow: none;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
