@@ -465,19 +465,20 @@ h3,
   }
 }
 
-/* Stats medallions — continuous 3D orbit */
+/* Stats medallions — continuous 3D orbit (wide radius + spatial depth) */
 .stats-orbit {
-  --orbit-duration: 28s;
-  --orbit-radius: 9.25rem;
+  --orbit-duration: 32s;
+  --orbit-radius: 13.5rem;
+  --orbit-tilt: 18deg;
 }
 
 .stats-orbit__stage {
   position: relative;
   display: grid;
   place-items: center;
-  height: clamp(18rem, 42vw, 22rem);
-  perspective: 1100px;
-  perspective-origin: 50% 42%;
+  height: clamp(22rem, 52vw, 30rem);
+  perspective: 820px;
+  perspective-origin: 50% 45%;
 }
 
 .stats-orbit__ring {
@@ -495,18 +496,14 @@ h3,
   place-items: center;
   transform-style: preserve-3d;
   transform: rotateY(calc(var(--orbit-index) * 90deg)) translateZ(var(--orbit-radius));
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
-/* Cancels ring rotation */
+/* Cancels ring Y-spin only — keep faces camera-locked */
 .stats-orbit__billboard {
   display: grid;
   place-items: center;
   transform-style: preserve-3d;
-  animation: stats-orbit-spin var(--orbit-duration) linear infinite reverse;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  animation: stats-orbit-counter var(--orbit-duration) linear infinite;
 }
 
 /* Cancels each item's base orbit angle — keeps every face readable */
@@ -518,8 +515,6 @@ h3,
   text-align: center;
   transform-style: preserve-3d;
   transform: rotateY(calc(var(--orbit-index) * -90deg));
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 .stats-orbit__medallion {
@@ -572,16 +567,31 @@ h3,
 
 @keyframes stats-orbit-spin {
   from {
+    transform: rotateX(var(--orbit-tilt)) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(var(--orbit-tilt)) rotateY(360deg);
+  }
+}
+
+@keyframes stats-orbit-counter {
+  from {
     transform: rotateY(0deg);
   }
   to {
-    transform: rotateY(360deg);
+    transform: rotateY(-360deg);
   }
 }
 
 @media (min-width: 768px) {
   .stats-orbit {
-    --orbit-radius: 11.5rem;
+    --orbit-radius: 18.5rem;
+    --orbit-tilt: 20deg;
+  }
+
+  .stats-orbit__stage {
+    height: clamp(26rem, 48vw, 34rem);
+    perspective: 760px;
   }
 
   .stats-orbit__medallion {
@@ -607,14 +617,28 @@ h3,
   }
 }
 
-@media (max-width: 767px) {
+@media (min-width: 1024px) {
   .stats-orbit {
-    --orbit-radius: 7.25rem;
-    --orbit-duration: 32s;
+    --orbit-radius: 21rem;
+    --orbit-tilt: 22deg;
   }
 
   .stats-orbit__stage {
-    height: 17rem;
+    height: 36rem;
+    perspective: 720px;
+  }
+}
+
+@media (max-width: 767px) {
+  .stats-orbit {
+    --orbit-radius: 10.5rem;
+    --orbit-duration: 36s;
+    --orbit-tilt: 16deg;
+  }
+
+  .stats-orbit__stage {
+    height: 21rem;
+    perspective: 900px;
   }
 
   .stats-orbit__medallion {
