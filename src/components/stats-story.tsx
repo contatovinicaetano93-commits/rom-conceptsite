@@ -12,8 +12,12 @@ function stepFromProgress(progress: number) {
   return Math.min(STEP_COUNT - 1, Math.floor(progress * STEP_COUNT))
 }
 
-function isStaticHeroValue(value: string) {
+function isStaticValue(value: string) {
   return value.length <= 2 || !/\d/.test(value)
+}
+
+function isHeroValue(value: string) {
+  return value.length <= 2
 }
 
 export function StatsStory() {
@@ -68,7 +72,8 @@ export function StatsStory() {
           <p className="stats-story__anchor mb-10 text-center">#SeuMomentoROM</p>
           <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-4">
             {stats.map((stat) => {
-              const hero = isStaticHeroValue(stat.value)
+              const staticValue = isStaticValue(stat.value)
+              const hero = isHeroValue(stat.value)
               return (
                 <div key={stat.label} className="flex flex-col items-center text-center">
                   <div className="stats-story__medallion flex shrink-0 items-center justify-center rounded-full p-3">
@@ -77,7 +82,7 @@ export function StatsStory() {
                         hero ? 'stats-story__value--hero' : ''
                       }`}
                     >
-                      {hero ? stat.value : <CountUp value={stat.value} />}
+                      {staticValue ? stat.value : <CountUp value={stat.value} />}
                     </p>
                   </div>
                   <p className="stats-story__label mt-4">{stat.label}</p>
@@ -100,7 +105,8 @@ export function StatsStory() {
 
           <div className="stats-story__stage">
             {stats.map((stat, index) => {
-              const hero = isStaticHeroValue(stat.value)
+              const staticValue = isStaticValue(stat.value)
+              const hero = isHeroValue(stat.value)
               const active = step === index
 
               return (
@@ -115,7 +121,7 @@ export function StatsStory() {
                         hero ? 'stats-story__value--hero' : ''
                       }`}
                     >
-                      {hero ? (
+                      {staticValue ? (
                         stat.value
                       ) : active ? (
                         <CountUp value={stat.value} />

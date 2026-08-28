@@ -666,6 +666,44 @@ h3,
   transition: width 0.35s var(--ease-out-expo);
 }
 
+.stats-story__track {
+  position: relative;
+  height: 320vh;
+}
+
+.stats-story__sticky {
+  position: sticky;
+  top: 0;
+  display: grid;
+  place-items: center;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.stats-story__phase {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+  filter: blur(4px);
+  transition:
+    opacity 0.7s var(--ease-out-expo),
+    transform 0.7s var(--ease-out-expo),
+    filter 0.7s var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.stats-story__phase.is-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: none;
+  pointer-events: auto;
+}
+
 @media (max-width: 767px) {
   .hero-story {
     height: 360vh;
@@ -685,7 +723,7 @@ h3,
   }
 
   .stats-story__track {
-    height: 260vh;
+    height: 280vh;
   }
 
   .rom-tech {
@@ -718,7 +756,8 @@ h3,
   }
 
   .hero-story__step,
-  .scroll-story-step {
+  .scroll-story-step,
+  .stats-story__phase {
     opacity: 1;
     transform: none;
     filter: none;
@@ -735,20 +774,6 @@ h3,
 }
 
 /* Stats sticky scroll — one medal per scroll phase */
-.stats-story__track {
-  position: relative;
-  height: 320vh;
-}
-
-.stats-story__sticky {
-  position: sticky;
-  top: 0;
-  display: grid;
-  place-items: center;
-  height: 100svh;
-  overflow: hidden;
-}
-
 .stats-story__glow {
   pointer-events: none;
   position: absolute;
@@ -789,30 +814,6 @@ h3,
   width: min(100%, 28rem);
   min-height: clamp(16rem, 42vh, 22rem);
   padding: 0 1.25rem;
-}
-
-.stats-story__phase {
-  grid-area: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(28px) scale(0.96);
-  filter: blur(4px);
-  transition:
-    opacity 0.7s var(--ease-out-expo),
-    transform 0.7s var(--ease-out-expo),
-    filter 0.7s var(--ease-out-expo);
-  pointer-events: none;
-}
-
-.stats-story__phase.is-active {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: none;
-  pointer-events: auto;
 }
 
 .stats-story__medallion {
@@ -914,12 +915,6 @@ h3,
   background: linear-gradient(90deg, var(--gold), var(--gold-bright));
   box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 50%, transparent);
   transition: width 0.45s var(--ease-out-expo);
-}
-
-@media (max-width: 767px) {
-  .stats-story__track {
-    height: 280vh;
-  }
 }
 
 /* Stats medallions — continuous 3D orbit (wide radius + spatial depth) */
