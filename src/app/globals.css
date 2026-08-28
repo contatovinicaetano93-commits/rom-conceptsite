@@ -684,6 +684,10 @@ h3,
     height: 440vh;
   }
 
+  .stats-story__track {
+    height: 260vh;
+  }
+
   .rom-tech {
     height: 360vh;
   }
@@ -695,6 +699,7 @@ h3,
   .unidades-story,
   .conceito-intro,
   .conceito-story,
+  .stats-story__track,
   .rom-tech {
     height: auto;
   }
@@ -704,6 +709,7 @@ h3,
   .unidades-story__sticky,
   .conceito-intro__sticky,
   .conceito-story__sticky,
+  .stats-story__sticky,
   .rom-tech__sticky {
     position: relative;
     height: auto;
@@ -722,8 +728,197 @@ h3,
 
   .hero-story__progress,
   .text-story__progress,
-  .unidades-story__progress {
+  .unidades-story__progress,
+  .stats-story__progress {
     display: none;
+  }
+}
+
+/* Stats sticky scroll — one medal per scroll phase */
+.stats-story__track {
+  position: relative;
+  height: 320vh;
+}
+
+.stats-story__sticky {
+  position: sticky;
+  top: 0;
+  display: grid;
+  place-items: center;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.stats-story__glow {
+  pointer-events: none;
+  position: absolute;
+  inset: -15%;
+  background:
+    radial-gradient(
+      ellipse 50% 42% at 50% 38%,
+      color-mix(in srgb, var(--gold) 16%, transparent),
+      transparent 68%
+    );
+}
+
+.stats-story__anchor {
+  position: absolute;
+  top: clamp(5.5rem, 14vh, 7.5rem);
+  left: 50%;
+  z-index: 3;
+  margin: 0;
+  max-width: 12rem;
+  translate: -50% 0;
+  text-align: center;
+  font-family: var(--font-display-face), var(--font-serif), serif;
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--gold-bright);
+  text-shadow:
+    0 0 18px color-mix(in srgb, var(--gold) 45%, transparent),
+    0 0 40px color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+.stats-story__stage {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: min(100%, 28rem);
+  min-height: clamp(16rem, 42vh, 22rem);
+  padding: 0 1.25rem;
+}
+
+.stats-story__phase {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+  filter: blur(4px);
+  transition:
+    opacity 0.7s var(--ease-out-expo),
+    transform 0.7s var(--ease-out-expo),
+    filter 0.7s var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.stats-story__phase.is-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: none;
+  pointer-events: auto;
+}
+
+.stats-story__medallion {
+  width: clamp(8.5rem, 24vw, 11rem);
+  height: clamp(8.5rem, 24vw, 11rem);
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid color-mix(in srgb, var(--gold-bright) 70%, transparent);
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      color-mix(in srgb, var(--gold) 28%, var(--card-elevated)),
+      var(--card-elevated) 62%
+    );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent),
+    0 0 32px color-mix(in srgb, var(--gold) 38%, transparent),
+    0 0 56px color-mix(in srgb, var(--gold) 18%, transparent),
+    0 20px 40px color-mix(in srgb, #000 45%, transparent),
+    inset 0 0 28px color-mix(in srgb, var(--gold) 14%, transparent);
+}
+
+.stats-story__value {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display-face), var(--font-serif), serif;
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--gold-bright);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+.stats-story__value--hero {
+  font-size: clamp(2.4rem, 8vw, 3.75rem);
+  line-height: 1;
+}
+
+.stats-story__label {
+  max-width: 16rem;
+  font-size: clamp(0.78rem, 2vw, 0.9rem);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--foreground) 92%, var(--muted));
+}
+
+.stats-story__split {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.stats-story__split-item {
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 85%, transparent);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.stats-story__split-item--brasil {
+  border-color: color-mix(in srgb, var(--brasil) 45%, var(--border));
+  color: var(--brasil);
+}
+
+.stats-story__split-item--iguatemi {
+  border-color: color-mix(in srgb, var(--iguatemi) 45%, var(--border));
+  color: var(--iguatemi);
+}
+
+.stats-story__progress {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.4rem;
+  left: 1.25rem;
+  z-index: 12;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--border) 80%, transparent);
+}
+
+@media (min-width: 1024px) {
+  .stats-story__progress {
+    right: 5.5rem;
+  }
+}
+
+.stats-story__progress-bar {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--gold) 50%, transparent);
+  transition: width 0.45s var(--ease-out-expo);
+}
+
+@media (max-width: 767px) {
+  .stats-story__track {
+    height: 280vh;
   }
 }
 

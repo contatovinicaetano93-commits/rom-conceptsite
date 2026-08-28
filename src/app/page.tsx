@@ -11,7 +11,7 @@ import { ScrollReveal } from '@/components/scroll-reveal'
 import { ServicosStory } from '@/components/servicos-story'
 import { SideGuide } from '@/components/side-guide'
 import { SiteIntro } from '@/components/site-intro'
-import { StatsOrbit } from '@/components/stats-orbit'
+import { StatsStory } from '@/components/stats-story'
 import { UnidadesStory } from '@/components/unidades-story'
 import { brand } from '@/lib/content'
 
@@ -70,11 +70,7 @@ export default function Home() {
           />
         </div>
 
-        <section className="border-y border-border bg-surface/50 py-14 md:py-16">
-          <div className="mx-auto max-w-5xl px-5 md:px-8">
-            <StatsOrbit />
-          </div>
-        </section>
+        <StatsStory />
 
         <UnidadesStory />
 
